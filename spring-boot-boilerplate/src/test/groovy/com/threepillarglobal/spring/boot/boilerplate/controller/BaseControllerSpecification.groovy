@@ -7,6 +7,9 @@ import spock.lang.Specification
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
+/**
+ * Base class for all controller test classes, which have to run with disabled security
+ */
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
