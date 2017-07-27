@@ -11,4 +11,5 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 class BaseControllerSpecification extends Specification {
+
 }
