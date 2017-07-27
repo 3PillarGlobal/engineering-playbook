@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.util.Base64Utils
 import spock.lang.Specification
 
+import static org.junit.Assert.assertNotNull
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
@@ -59,7 +60,7 @@ class LoginControllerSpec extends Specification {
         def authenticationToken = loginResponse.getHeader('x-auth-token')
 
         then: 'x-auth-token is present in the response'
-        authenticationToken != null
+        assertNotNull(authenticationToken)
 
         when: 'accessing a protected resource with x-auth-token obtained during login '
         def documentsResponse = mockMvc.perform(get('/api/documents').header('x-auth-token', authenticationToken))
