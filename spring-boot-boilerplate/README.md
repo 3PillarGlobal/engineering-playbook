@@ -4,3 +4,5 @@ Includes:
 - spring data
 - integration testing with Spock
 - pmd, findbugs, checkstyle
+- jacoco test coverage
+- sonar cube integration
