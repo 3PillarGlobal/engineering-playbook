@@ -20,11 +20,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = authentication.getCredentials().toString();
 
         if (name.equals("admin_admin")) {
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
             UserProfileDto userProfileDto = new UserProfileDto();
             userProfileDto.setUsername("admin");
             userProfileDto.setFirstName("Admin");
             userProfileDto.setLastName("Admin");
+
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
             usernamePasswordAuthenticationToken.setDetails(userProfileDto);
             return usernamePasswordAuthenticationToken;
         } else {

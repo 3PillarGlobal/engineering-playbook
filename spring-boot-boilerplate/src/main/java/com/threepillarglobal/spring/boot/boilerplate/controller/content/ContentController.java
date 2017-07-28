@@ -26,20 +26,20 @@ public class ContentController {
     }
 
     private List<DocumentDto> createDocumentsResponse() {
-        List<DocumentDto> result = new ArrayList<>();
 
         DocumentDto documentDto1 = new DocumentDto();
         documentDto1.setName("Document 1");
         documentDto1.setDescription("Document 1 description");
         documentDto1.setUrl("https://www.someurl.com/document1.pdf");
-        result.add(documentDto1);
 
         DocumentDto documentDto2 = new DocumentDto();
         documentDto2.setName("Document 2");
         documentDto2.setDescription("Document 2 description");
         documentDto2.setUrl("https://www.someurl.com/document2.pdf");
-        result.add(documentDto2);
 
+        List<DocumentDto> result = new ArrayList<>();
+        result.add(documentDto1);
+        result.add(documentDto2);
         return result;
     }
 }

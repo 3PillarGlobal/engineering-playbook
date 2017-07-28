@@ -2,14 +2,11 @@ group 'com.3pillarglobal'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext {
-        springBootVersion = '1.5.6.RELEASE'
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE')
     }
 }
 
@@ -17,6 +14,10 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -26,15 +27,56 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-security:1.5.6.RELEASE'
 
     compile 'org.springframework.session:spring-session:1.3.1.RELEASE'
 
-    compile "io.springfox:springfox-swagger2:2.7.0"
-    compile "io.springfox:springfox-swagger-ui:2.7.0"
+    compile 'io.springfox:springfox-swagger2:2.7.0'
+    compile 'io.springfox:springfox-swagger-ui:2.7.0'
 
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.6.RELEASE'
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
     testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
+
+    /* static analysis */
+    checkstyle 'com.puppycrawl.tools:checkstyle:8.1'
+}
+
+checkstyle {
+    ignoreFailures = false
+    reportsDir = file("$project.buildDir/reports/checkstyle")
+    configFile = new File(rootDir, 'misc/checkstyle/checkstyle-gradle.xml')
+    configProperties = [ 'suppressionFile' : new File(rootDir, 'misc/checkstyle/checkstyle-suppressions.xml')]
+}
+
+findbugs {
+    toolVersion = '3.0.1'
+    sourceSets = [sourceSets.main]
+    ignoreFailures = false
+    reportsDir = file("$project.buildDir/reports/findbugs")
+    effort = 'max'
+    reportLevel = 'high'
+    visitors = ['FindSqlInjection', 'SwitchFallthrough']
+    omitVisitors = ['FindNonShortCircuit']
+    includeFilter = file("$rootProject.projectDir/misc/findbugs/findbugs-sonar.xml")
+    excludeFilter = file("$rootProject.projectDir/misc/findbugs/findbugs-sonar-exclude.xml")
+}
+
+pmd {
+    ignoreFailures = false
+    sourceSets = [sourceSets.main]
+    reportsDir = file("$project.buildDir/reports/pmd")
+}
+
+jacoco {
+    toolVersion = '0.7.7.201606060606'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }

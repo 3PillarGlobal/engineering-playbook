@@ -50,6 +50,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authProvider);
     }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                /* in case swagger is enabled */
+                .antMatchers("/v2/api-docs")
+                .antMatchers("/swagger-ui.html")
+                .antMatchers("/webjars/**")
+                .antMatchers("/swagger-resources/**");
+    }
+
     @Bean(name = "corsFilter")
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
@@ -65,17 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-                /* in case swagger is enabled */
-                .antMatchers("/v2/api-docs")
-                .antMatchers("/swagger-ui.html")
-                .antMatchers("/webjars/**")
-                .antMatchers("/swagger-resources/**");
-
     }
 
 }
