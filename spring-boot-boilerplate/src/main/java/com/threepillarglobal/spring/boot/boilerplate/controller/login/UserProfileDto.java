@@ -1,6 +1,8 @@
 package com.threepillarglobal.spring.boot.boilerplate.controller.login;
 
-public class UserProfileDto {
+import java.io.Serializable;
+
+public class UserProfileDto implements Serializable {
 
     private String username;
     private String firstName;
