@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6.3
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    ports:
+      - 5432:5432
+  sonar:
+    build:
+      context: .
+      dockerfile: Docker-sonar-java-plugins
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      SONARQUBE_JDBC_USERNAME: sonar
+      SONARQUBE_JDBC_PASSWORD: sonar
+      SONARQUBE_JDBC_URL: jdbc:postgresql://db/sonar
+    ports:
+      - 9000:9000
+      - 9092:9092

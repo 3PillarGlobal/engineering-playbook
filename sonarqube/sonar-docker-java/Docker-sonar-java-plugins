@@ -1,0 +1,23 @@
+FROM sonarqube:6.4
+
+# Install plugins
+
+ENV JAVA_PLUGIN_VERSION 4.11.0.10660
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar \
+	https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar
+
+ENV FINDBUGS_PLUGIN_VERSION 3.5.0
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-findbugs-plugin-${FINDBUGS_PLUGIN_VERSION}.jar \
+  https://github.com/SonarQubeCommunity/sonar-findbugs/releases/download/${FINDBUGS_PLUGIN_VERSION}/sonar-findbugs-plugin.jar  
+
+ENV PMD_PLUGIN_VERSION 2.6
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-pmd-plugin-${PMD_PLUGIN_VERSION}.jar \  
+  https://github.com/SonarQubeCommunity/sonar-pmd/releases/download/${PMD_PLUGIN_VERSION}/sonar-pmd-plugin-${PMD_PLUGIN_VERSION}.jar
+
+ENV CHECKSTYLE_PLUGIN_VERSION 3.7
+RUN curl -sLo /opt/sonarqube/extensions/plugins/checkstyle-sonar-plugin-${CHECKSTYLE_PLUGIN_VERSION}.jar \  
+  https://github.com/checkstyle/sonar-checkstyle/releases/download/${CHECKSTYLE_PLUGIN_VERSION}/checkstyle-sonar-plugin-${CHECKSTYLE_PLUGIN_VERSION}.jar
+
+ENV GROOVY_PLUGIN_VERSION 1.5
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-groovy-plugin-${GROOVY_PLUGIN_VERSION}.jar \
+    https://github.com/SonarQubeCommunity/sonar-groovy/releases/download/${GROOVY_PLUGIN_VERSION}/sonar-groovy-plugin-${GROOVY_PLUGIN_VERSION}.jar
