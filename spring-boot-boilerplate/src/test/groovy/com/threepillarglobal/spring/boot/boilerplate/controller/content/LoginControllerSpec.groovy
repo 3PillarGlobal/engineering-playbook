@@ -25,7 +25,7 @@ class LoginControllerSpec extends Specification {
 
         when:
         def response = mockMvc.perform(get('/api/login').header(HttpHeaders.AUTHORIZATION,
-                'Basic ' + Base64Utils.encodeToString('admin_admin:secret'.getBytes())))
+                'Basic ' + Base64Utils.encodeToString('admin:secret'.getBytes())))
 
         then:
         response.andExpect(status().isOk())
@@ -54,7 +54,7 @@ class LoginControllerSpec extends Specification {
 
         when: 'logging in with valid credentials '
         def loginResponse = mockMvc.perform(get('/api/login')
-                .header(HttpHeaders.AUTHORIZATION, 'Basic ' + Base64Utils.encodeToString('admin_admin:secret'.getBytes())))
+                .header(HttpHeaders.AUTHORIZATION, 'Basic ' + Base64Utils.encodeToString('admin:secret'.getBytes())))
                 .andReturn()
                 .getResponse()
         def authenticationToken = loginResponse.getHeader('x-auth-token')
