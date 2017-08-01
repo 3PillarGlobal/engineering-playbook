@@ -1,2 +1,4 @@
 #spring:
 #  autoconfigure.exclude: org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
+
+flyway.locations: classpath:db/migration,classpath:db/dev

@@ -3,8 +3,46 @@ spring:
     default: local
     active: local
 
+  h2.console.enabled: true
+  h2.console.path: /h2
+
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL
+    jdbcUrl: jdbc:h2:mem:test;MODE=MySQL
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: validate
+
+# Postgresql Datasource
+#  datasource:
+#    url: jdbc:postgresql://${mysql_host}:${mysql_port}/${mysql_db}
+#    jdbcUrl: jdbc:postgresql://${mysql_host}:${mysql_port}/${mysql_db}
+#    username:
+#    password:
+#    driverClassName: org.postgresql.Driver
+#    poolName: SpringBootHikariCP
+#    maximumPoolSize: 10
+#    minimumIdle: 3
+#    maxLifetime: 2000000
+#    connectionTimeout: 30000
+#    idleTimeout: 30000
+#    pool-prepared-statements: true
+#    max-open-prepared-statements: 250
+
+flyway:
+  enabled: true
+  baselineVersion: 0
+  baselineOnMigrate: true
+  locations: classpath:db/db.migration
+  outOfOrder: true
+
 logging:
   level:
     com.threepillarglobal.spring.boot.boilerplate: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
 
 allowed.origins: "*"
