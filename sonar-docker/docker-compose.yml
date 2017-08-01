@@ -12,7 +12,7 @@ services:
   sonar:
     build:
       context: .
-      dockerfile: Docker-sonar-java-plugins
+      dockerfile: Docker-sonar-plugins
     links:
       - db
     depends_on:

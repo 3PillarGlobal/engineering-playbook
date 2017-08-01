@@ -1,5 +1,5 @@
 # sonarqube-server-docker
-Setup a local Sonarqube instance using docker &amp; docker-compose. This instance is customised with the most useful plugins for Java related projects.
+Setup a local Sonarqube instance using docker &amp; docker-compose. This instance comes with a set of useful plugins installed.
 
 # Installation
 
