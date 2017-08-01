@@ -3,30 +3,10 @@ import { withRouter } from 'react-router';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import VALIDATION_REPO from '../constants/ValidationRepo';
-
-const styleSheet = createStyleSheet('Login', theme => ({
-  card: {
-    width: '30rem'
-  },
-  cardContent: {
-    padding: '2rem'
-  },
-  subtitle: { color: theme.palette.text.secondary },
-  textfield: {
-    width: '100%'
-  },
-  cardActions: {
-    padding: '0 2rem 2rem 2rem',
-    justifyContent: 'flex-end'
-  },
-  button: {
-    margin: 0,
-    color: '#fff'
-  }
-}));
+import PUBLIC_PAGE_STYLE from './styles/publicPageStyle';
 
 class Login extends React.Component {
   constructor(props) {
@@ -138,4 +118,4 @@ class Login extends React.Component {
   }
 }
 
-export default withStyles(styleSheet)(withRouter(Login));
+export default withStyles(PUBLIC_PAGE_STYLE)(withRouter(Login));

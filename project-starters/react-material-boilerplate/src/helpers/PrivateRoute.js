@@ -1,12 +1,13 @@
 import React from 'react';
 import URL_REPO from '../constants/UrlRepo';
+import APP_CONFIG from '../constants/AppConfig';
 import { Route, Redirect } from 'react-router-dom';
 
 class PrivateRoute extends React.Component {
   constructor(props) {
     super(props);
-    this.token = localStorage.getItem('x-auth-token')
-      ? localStorage.getItem('x-auth-token')
+    this.token = localStorage.getItem(APP_CONFIG.TOKEN)
+      ? localStorage.getItem(APP_CONFIG.TOKEN)
       : null;
   }
 

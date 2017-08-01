@@ -24,15 +24,15 @@ AppStarter
 
 ## Intended source file organization
 - Pages
-  - Keep unprotected (public) pages under /public.
-  - Keep protected pages under /private.
+  - Keep unprotected (public) pages under `/public`.
+  - Keep protected pages under `/private`.
 
 - Constants
-  - Constants, static data models, configuration files and i18n go under /constants.
+  - Constants, static data models, configuration files, generic form validation rules, server-side URLs go under `/constants`.
 
 - Helpers
-  - helpers and utils go under /helpers.
+  - helpers and utils go under `/helpers`.
 
 - Commonly used components
-  - Components that are used by more than one page should go under /components.
+  - Components that are used by more than one page should go under `/components`.
 
