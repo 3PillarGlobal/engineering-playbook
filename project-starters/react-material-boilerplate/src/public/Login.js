@@ -7,6 +7,8 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import VALIDATION_REPO from '../constants/ValidationRepo';
 import PUBLIC_PAGE_STYLE from './styles/publicPageStyle';
+import APP_CONFIG from '../constants/AppConfig';
+import URL_REPO from '../constants/UrlRepo';
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,6 +25,13 @@ class Login extends React.Component {
       passwordHasError: false
     };
   }
+
+  componentDidMount() {
+    if (localStorage.getItem(APP_CONFIG.TOKEN)) {
+      this.props.history.replace(URL_REPO.BASE_URL);
+    }
+  }
+
   render() {
     return (
       <div className="u-fx u-fx-align-center u-fx-justify-center u-height-full">
