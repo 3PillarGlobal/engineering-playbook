@@ -41,8 +41,6 @@ dependencies {
     compile 'io.springfox:springfox-swagger2:2.7.0'
     compile 'io.springfox:springfox-swagger-ui:2.7.0'
 
-    compileOnly "org.projectlombok:lombok:1.16.16"
-
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.6.RELEASE'
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
     testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
