@@ -1,17 +1,27 @@
-package com.tpg.starter.controller.login;
+package com.tpg.starter.controller.content;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class UserProfileDto implements Serializable {
+public class UserDto {
 
+    private Long id;
     private String username;
+    private String password;
     private String firstName;
     private String lastName;
-    private List<String> roles;
+    private List<RoleDto> roles;
+
+
+    public Long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getFirstName() {
@@ -22,12 +32,20 @@ public class UserProfileDto implements Serializable {
         return lastName;
     }
 
-    public List<String> getRoles() {
+    public List<RoleDto> getRoles() {
         return roles;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setFirstName(String firstName) {
@@ -38,7 +56,7 @@ public class UserProfileDto implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<RoleDto> roles) {
         this.roles = roles;
     }
 

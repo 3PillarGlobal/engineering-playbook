@@ -1,9 +1,11 @@
 package com.tpg.starter.security;
 
 
+import com.tpg.starter.controller.content.RoleDto;
+import com.tpg.starter.controller.content.UserDto;
 import com.tpg.starter.controller.login.UserProfileDto;
 import com.tpg.starter.domain.User;
-import com.tpg.starter.service.repository.UserRepository;
+import com.tpg.starter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,13 +15,15 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -27,11 +31,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        User user = userRepository.findByUsername(name);
+        Optional<UserDto> userDto = userService.findByUsername(name);
 
-        if (user != null && user.getPassword().equals(password)) {
+        if (userDto.isPresent() && userDto.get().getPassword().equals(password)) {
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(name, password, new ArrayList<>());
-            UserProfileDto userProfileDto = userToUserProfileDto().apply(user);
+            UserProfileDto userProfileDto = userToUserProfileDto().apply(userDto.get());
             usernamePasswordAuthenticationToken.setDetails(userProfileDto);
             return usernamePasswordAuthenticationToken;
         } else {
@@ -44,12 +48,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-    private Function<User, UserProfileDto> userToUserProfileDto() {
-        return user -> {
+    private Function<UserDto, UserProfileDto> userToUserProfileDto() {
+        return userDto -> {
             UserProfileDto userProfileDto = new UserProfileDto();
-            userProfileDto.setUsername(user.getUsername());
-            userProfileDto.setFirstName(user.getFirstName());
-            userProfileDto.setLastName(user.getLastName());
+            userProfileDto.setUsername(userDto.getUsername());
+            userProfileDto.setFirstName(userDto.getFirstName());
+            userProfileDto.setLastName(userDto.getLastName());
+            userProfileDto.setRoles(userDto.getRoles().stream().map(RoleDto::getName).collect(Collectors.toList()));
             return userProfileDto;
         };
     }

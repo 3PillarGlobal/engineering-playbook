@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -24,6 +28,13 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @ManyToMany(targetEntity = Role.class)
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private List<Role> roles;
 
     public Long getId() {
         return id;
@@ -45,6 +56,10 @@ public class User {
         return lastName;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -59,6 +74,10 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
 }

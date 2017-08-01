@@ -13,6 +13,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import static org.hamcrest.Matchers.hasSize
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -30,6 +31,8 @@ class LoginControllerSpec extends Specification {
         then:
         response.andExpect(status().isOk())
                 .andExpect(jsonPath('$.username').value('admin'))
+                .andExpect(jsonPath('$.roles', hasSize(1)))
+                .andExpect(jsonPath('$.roles[0]').value('ADMIN'))
 
     }
 
