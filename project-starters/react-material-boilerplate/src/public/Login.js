@@ -123,9 +123,15 @@ class Login extends React.Component {
 
   _loginCallback(error, response) {
     if (error) {
-      console.log('TODO Sad path');
-    } else if (response.statusCode === 200) {
-      localStorage.setItem(APP_CONFIG.TOKEN, response.body.username);
+      console.log('#TODO Treat errors');
+    } else if (
+      response.statusCode === 200 &&
+      response.headers[APP_CONFIG.TOKEN]
+    ) {
+      localStorage.setItem(
+        APP_CONFIG.TOKEN,
+        response.headers[APP_CONFIG.TOKEN]
+      );
       localStorage.setItem(
         APP_CONFIG.USER_FULL_NAME,
         `${response.body.firstName} ${response.body.lastName}`
