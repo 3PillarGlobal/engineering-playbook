@@ -5,7 +5,8 @@ const URL_REPO = {
   ROOT_URL: '/',
   UNAUTHORIZED: '/unauthorized',
   NOT_FOUND: '/notFound',
-  LOGIN: '/login'
+  LOGIN: '/login',
+  BE_LOGIN: 'http://localhost:8080/api/login'
 };
 
 export default URL_REPO;

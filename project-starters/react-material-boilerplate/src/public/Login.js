@@ -9,6 +9,7 @@ import VALIDATION_REPO from '../constants/ValidationRepo';
 import PUBLIC_PAGE_STYLE from './styles/publicPageStyle';
 import APP_CONFIG from '../constants/AppConfig';
 import URL_REPO from '../constants/UrlRepo';
+import request from 'superagent';
 
 class Login extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Login extends React.Component {
 
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleKeypress = this._handleKeypress.bind(this);
+    this._loginCallback = this._loginCallback.bind(this);
 
     this.state = {
       username: '',
@@ -119,10 +121,26 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  _loginCallback(error, response) {
+    if (error) {
+      console.log('TODO Sad path');
+    } else if (response.statusCode === 200) {
+      localStorage.setItem(APP_CONFIG.TOKEN, response.body.username);
+      localStorage.setItem(
+        APP_CONFIG.USER_FULL_NAME,
+        `${response.body.firstName} ${response.body.lastName}`
+      );
+      localStorage.setItem(APP_CONFIG.USER_ROLES, response.body.roles);
+      this.props.history.push(URL_REPO.ROOT_URL);
+    }
+  }
+
   _handleSubmit() {
-    console.log(this.state.username, this.state.password);
     if (this._validateForm()) {
-      console.log('do request');
+      return request
+        .get(URL_REPO.BE_LOGIN)
+        .auth(this.state.username, this.state.password)
+        .end(this._loginCallback);
     }
   }
 }
