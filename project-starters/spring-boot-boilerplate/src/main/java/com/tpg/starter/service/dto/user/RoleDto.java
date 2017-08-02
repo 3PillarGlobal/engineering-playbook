@@ -1,4 +1,4 @@
-package com.tpg.starter.controller.content;
+package com.tpg.starter.service.dto.user;
 
 public class RoleDto {
 
