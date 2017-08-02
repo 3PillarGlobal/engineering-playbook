@@ -6,7 +6,8 @@ const URL_REPO = {
   UNAUTHORIZED: '/unauthorized',
   NOT_FOUND: '/notFound',
   LOGIN: '/login',
-  BE_LOGIN: 'http://localhost:8080/api/login'
+  BE_LOGIN: 'http://localhost:8080/api/login',
+  BE_LOGOUT: 'http://localhost:8080/api/logout'
 };
 
 export default URL_REPO;
