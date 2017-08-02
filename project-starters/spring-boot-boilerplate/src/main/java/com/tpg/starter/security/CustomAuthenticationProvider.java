@@ -4,7 +4,6 @@ package com.tpg.starter.security;
 import com.tpg.starter.controller.content.RoleDto;
 import com.tpg.starter.controller.content.UserDto;
 import com.tpg.starter.controller.login.UserProfileDto;
-import com.tpg.starter.domain.User;
 import com.tpg.starter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
