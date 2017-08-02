@@ -18,6 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-cov": "npm test -- --coverage",
+    "test-nw": "cross-env CI=true react-scripts test --env=jsdom",
+    "test-nw-cov": "npm run test-nw -- --coverage",
     "eject": "react-scripts eject"
   }
 }

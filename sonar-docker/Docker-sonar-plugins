@@ -2,7 +2,7 @@ FROM sonarqube:6.4
 
 # Install plugins
 
-ENV JAVA_PLUGIN_VERSION 4.11.0.10660
+ENV JAVA_PLUGIN_VERSION 4.12.0.11033
 RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar \
 	https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-${JAVA_PLUGIN_VERSION}.jar
 
@@ -21,3 +21,7 @@ RUN curl -sLo /opt/sonarqube/extensions/plugins/checkstyle-sonar-plugin-${CHECKS
 ENV GROOVY_PLUGIN_VERSION 1.5
 RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-groovy-plugin-${GROOVY_PLUGIN_VERSION}.jar \
     https://github.com/SonarQubeCommunity/sonar-groovy/releases/download/${GROOVY_PLUGIN_VERSION}/sonar-groovy-plugin-${GROOVY_PLUGIN_VERSION}.jar
+
+ENV JS_PLUGIN_VERSION 3.1.1.5128
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar \
+	https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar    
