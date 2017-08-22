@@ -24,4 +24,8 @@ RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-groovy-plugin-${GROOVY_PLU
 
 ENV JS_PLUGIN_VERSION 3.1.1.5128
 RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar \
-	https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar    
+	https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-${JS_PLUGIN_VERSION}.jar
+
+ENV PY_PLUGIN_VERSION 1.8.0.1496
+RUN curl -sLo /opt/sonarqube/extensions/plugins/sonar-python-plugin-${PY_PLUGIN_VERSION}.jar \
+         https://sonarsource.bintray.com/Distribution/sonar-python-plugin/sonar-python-plugin-${PY_PLUGIN_VERSION}.jar
