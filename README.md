@@ -8,7 +8,7 @@ A collection of boilerplate projects to help you kick-start your new product. Th
 * setup for unit / integration testing frameworks + code coverage
 * SonarQube config file
 * static analysis at compile time - whichever of the followings applies - linters, pmd, findbugs, checkstyle
-* ide formatters
+* IDE formatters
 
 ## Boilerplate code
 Anything that applies to a specific setup; e.g. implementation for authentication / authorisation
