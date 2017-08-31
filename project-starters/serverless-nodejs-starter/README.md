@@ -1,4 +1,4 @@
-#Serverless Starter
+# Serverless Starter
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 
@@ -9,13 +9,13 @@ This project contains the following:
 - DynamoDB integration
 - Local offline dev env
 
-##Prerequisites
+## Prerequisites
 
 - [Serverless Framework](https://serverless.com/)
 - [Nodejs v6.10.3](https://nodejs.org/)
 - [Setup your AWS credentials](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
 
-##Installation
+## Installation
 
 Install node 6.10.3
 
@@ -36,13 +36,13 @@ npm install
 serverless dynamodb install
 ```
 
-##Run locally:
+## Run locally:
 
 ```
 serverless offline start
 ```
 
-##Testing with Curl
+## Testing with Curl
 
 Use the following commands to test your newly created endpoints.
 
@@ -60,7 +60,7 @@ Create new report
 curl -X POST -H "Content-Type:application/json" http://localhost:3000/reports --data '{ "text": "Learn Serverless" }'
 ```
 
-##Deploy in AWS
+## Deploy in AWS
 
 https://serverless.com/framework/docs/providers/aws/guide/credentials/
 https://serverless.com/framework/docs/providers/aws/guide/deploying/
@@ -76,7 +76,7 @@ Dev stage deployment
 serverless deploy
 ```
 
-##Removal
+## Removal
 
 Once you're all done with the serverless-starter project, use the following command to remove the project from AWS completely.
 
