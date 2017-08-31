@@ -38,9 +38,13 @@ provider:
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 functions:
-  list:
-    handler: src/backend/report/list/list.list
+  reports:
+    handler: src/backend/report/handler.handler
     events:
+      - http:
+          path: reports
+          method: post
+          cors: true
       - http:
           path: reports
           method: get
@@ -48,19 +52,7 @@ functions:
     package:
       include:
         - src/backend/lib/**
-        - src/backend/report/list/**         
-
-  create:
-    handler: src/backend/report/create/create.create
-    events:
-      - http:
-          path: reports
-          method: post
-          cors: true
-    package:
-      include:
-        - src/backend/lib/**
-        - src/backend/report/create/**         
+        - src/backend/report/**         
 
 resources:
   Resources:
