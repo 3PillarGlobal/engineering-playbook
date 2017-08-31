@@ -1,7 +1,7 @@
 package com.tpg.starter.service;
 
-import com.tpg.starter.controller.content.RoleDto;
-import com.tpg.starter.controller.content.UserDto;
+import com.tpg.starter.service.dto.user.RoleDto;
+import com.tpg.starter.service.dto.user.UserDto;
 import com.tpg.starter.domain.User;
 import com.tpg.starter.service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
