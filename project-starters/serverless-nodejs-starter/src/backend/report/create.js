@@ -2,7 +2,11 @@
 
 const uuid = require('uuid');
 const dynamodb = require('../lib/dynamodb');
+const { buildHandlerError } = require('../common/requestHelpers');
 
+/**
+ * create a new report
+ */
 module.exports.create = payload => {
   return new Promise(function(resolve, reject) {
     const timestamp = new Date().getTime();
@@ -10,7 +14,7 @@ module.exports.create = payload => {
 
     if (typeof data.text !== 'string') {
       console.error('Validation Failed. Invalid input data ' + data);
-      reject({ statusCode: 400, errorMessage: 'No text data input provided' });
+      reject(buildHandlerError(400, 'No text data input provided'));
     }
 
     const params = {
@@ -27,7 +31,7 @@ module.exports.create = payload => {
     dynamodb.put(params, error => {
       if (error) {
         console.error(error);
-        reject({ statusCode: 400, errorMessage: 'Failed to save into DB' });
+        reject(buildHandlerError(400, 'Failed to save into DB'));
       }
 
       const result = {

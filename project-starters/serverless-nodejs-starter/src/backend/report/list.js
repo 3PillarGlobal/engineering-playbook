@@ -1,7 +1,11 @@
 'use strict';
 
 const dynamodb = require('../lib/dynamodb');
+const { buildHandlerError } = require('../common/requestHelpers');
 
+/**
+ * list all reports
+ */
 module.exports.list = () => {
   return new Promise(function(resolve, reject) {
     const params = {
@@ -11,7 +15,7 @@ module.exports.list = () => {
     dynamodb.scan(params, (error, result) => {
       if (error) {
         console.error(error);
-        reject({ statusCode: 400, errorMessage: 'Cannot connect to DB' });
+        reject(buildHandlerError(400, 'Cannot connect to DB'));
       }
 
       const response = {
