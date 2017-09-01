@@ -4,13 +4,13 @@ const uuid = require('uuid');
 const dynamodb = require('../lib/dynamodb');
 
 module.exports.create = payload => {
-  return new Promise(function(res, reject) {
+  return new Promise(function(resolve, reject) {
     const timestamp = new Date().getTime();
     const data = JSON.parse(payload);
 
     if (typeof data.text !== 'string') {
       console.error('Validation Failed. Invalid input data ' + data);
-      reject('Invalid input');
+      reject({ statusCode: 400, errorMessage: 'No text data input provided' });
     }
 
     const params = {
@@ -27,7 +27,7 @@ module.exports.create = payload => {
     dynamodb.put(params, error => {
       if (error) {
         console.error(error);
-        reject('Failed to save into DB');
+        reject({ statusCode: 400, errorMessage: 'Failed to save into DB' });
       }
 
       const result = {
@@ -35,7 +35,7 @@ module.exports.create = payload => {
         body: JSON.stringify(params.Item)
       };
 
-      res(result);
+      resolve(result);
     });
   });
 };

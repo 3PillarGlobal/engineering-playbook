@@ -12,7 +12,7 @@ module.exports.handler = function(event, context, callback) {
       })
       .catch(function(err) {
         console.error(err);
-        callback(err);
+        callback(null, buildErrorResponse(err));
       });
   } else if (event.path === '/reports' && event.httpMethod === 'GET') {
     list
@@ -22,7 +22,18 @@ module.exports.handler = function(event, context, callback) {
       })
       .catch(function(err) {
         console.error(err);
-        callback(err);
+        callback(null, buildErrorResponse(err));
       });
   }
 };
+
+function buildErrorResponse(err) {
+  const statusCode = err.statusCode ? err.statusCode : 500;
+  const errorMessage = err.statusCode
+    ? err.errorMessage
+    : 'Internal server error';
+  return {
+    statusCode: statusCode,
+    body: JSON.stringify({ errorMessage: errorMessage })
+  };
+}
