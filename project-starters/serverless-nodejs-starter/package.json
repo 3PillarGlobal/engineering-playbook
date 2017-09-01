@@ -5,12 +5,18 @@
   "repository": "",
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "test": "mocha --timeout=1350 src/backend/\\*\\*/\\*.test.js"
+  },
   "dependencies": {
     "aws-sdk": "^2.12.0",
     "uuid": "^2.0.3"
   },
   "devDependencies": {
     "serverless-dynamodb-local": "^0.2.18",
-    "serverless-offline": "^3.8.3"
+    "serverless-offline": "^3.8.3",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^3.2.0"
   }
 }
