@@ -3,10 +3,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
-const dynamodb = require('../lib/dynamodb');
 
-const LOCAL_ENV_HOST = 'http://localhost:3000';
-const DYNAMO_DB_TABLE_NAME = 'serverless-starter-backend-api-test'; //process.env.DYNAMODB_TABLE is undefined
+const API_HOST = process.env.API_HOST;
 
 chai.use(chaiHttp);
 
@@ -19,7 +17,7 @@ describe('GET Reports', () => {
   describe('/GET all reports on empty database', () => {
     it('it should return an empty array response', done => {
       chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .get('/reports')
         .end((err, res) => {
           res.should.have.status(200);
@@ -35,7 +33,7 @@ describe('GET Reports', () => {
     before(done => {
       // insert 1 report
       chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .post('/reports')
         .send({ text: 'Report 1' })
         .end(function(error, response) {
@@ -47,7 +45,7 @@ describe('GET Reports', () => {
 
     it('it should retrieve previously inserted document', done => {
       chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .get('/reports')
         .end((err, response) => {
           response.should.have.status(200);
@@ -64,20 +62,13 @@ describe('GET Reports', () => {
 
     after(done => {
       // delete inserted report
-      var params = {
-        TableName: DYNAMO_DB_TABLE_NAME,
-        Key: {
-          id: reportId
-        }
-      };
-      dynamodb.delete(params, function(err, data) {
-        if (err) {
-          console.log('failed to delete report ' + err);
-        } else {
-          console.log('report deleted ');
-        }
-        done();
-      });
+      chai
+        .request(API_HOST)
+        .delete('/reports/' + reportId)
+        .end((err, response) => {
+          response.should.have.status(200);
+          done();
+        });
     });
   });
 
@@ -86,12 +77,12 @@ describe('GET Reports', () => {
     before(done => {
       // insert 2 reports
       const insertReport1Promise = chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .post('/reports')
         .send({ text: 'Report 2.1' });
 
       const insertReport2Promise = chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .post('/reports')
         .send({ text: 'Report 2.2' });
 
@@ -112,7 +103,7 @@ describe('GET Reports', () => {
 
     it('it should retrieve previously inserted documents', done => {
       chai
-        .request(LOCAL_ENV_HOST)
+        .request(API_HOST)
         .get('/reports')
         .end((err, response) => {
           response.should.have.status(200);
@@ -124,34 +115,24 @@ describe('GET Reports', () => {
 
     after(done => {
       // delete inserted reports
-      var deleteReport1 = {
-        TableName: DYNAMO_DB_TABLE_NAME,
-        Key: {
-          id: report1Id
-        }
-      };
-      dynamodb.delete(deleteReport1, function(err, data) {
-        if (err) {
-          console.log('failed to delete report 1 ' + err);
-        } else {
-          console.log('report 1 deleted ');
-        }
-      });
+      const deleteReport1Promise = chai
+        .request(API_HOST)
+        .delete('/reports/' + report1Id);
+      const deleteReport2Promise = chai
+        .request(API_HOST)
+        .delete('/reports/' + report2Id);
 
-      var deleteReport2 = {
-        TableName: DYNAMO_DB_TABLE_NAME,
-        Key: {
-          id: report2Id
-        }
-      };
-      dynamodb.delete(deleteReport2, function(err, data) {
-        if (err) {
-          console.log('failed to delete report 2' + err);
-        } else {
-          console.log('report 2 deleted ');
-        }
-        done();
-      });
+      Promise.all([deleteReport1Promise, deleteReport2Promise])
+        .then(values => {
+          const response1 = values[0];
+          const response2 = values[1];
+          response1.should.have.status(200);
+          response2.should.have.status(200);
+          done();
+        })
+        .catch(err => {
+          console.error('Failed to delete reports: ' + err);
+        });
     });
   });
 });

@@ -1,3 +1,4 @@
+export API_HOST=http://localhost:3000
 serverless offline start --stage test --exec "npm test"
 
 #kill dynamoDB
