@@ -41,7 +41,6 @@ describe('GET Reports', () => {
         .end(function(error, response) {
           response.should.have.status(200);
           reportId = response.body.id;
-          console.log('!!!!!' + reportId);
           done();
         });
     });
@@ -86,24 +85,28 @@ describe('GET Reports', () => {
     let report1Id, report2Id;
     before(done => {
       // insert 2 reports
-      chai
+      const insertReport1Promise = chai
         .request(LOCAL_ENV_HOST)
         .post('/reports')
-        .send({ text: 'Report 2.1' })
-        .end(function(error, response) {
-          response.should.have.status(200);
-          report1Id = response.body.id;
-          // done();
-        });
+        .send({ text: 'Report 2.1' });
 
-      chai
+      const insertReport2Promise = chai
         .request(LOCAL_ENV_HOST)
         .post('/reports')
-        .send({ text: 'Report 2.2' })
-        .end(function(error, response) {
-          response.should.have.status(200);
-          report2Id = response.body.id;
+        .send({ text: 'Report 2.2' });
+
+      Promise.all([insertReport1Promise, insertReport2Promise])
+        .then(values => {
+          const response1 = values[0];
+          const response2 = values[1];
+          response1.should.have.status(200);
+          report1Id = response1.body.id;
+          response2.should.have.status(200);
+          report2Id = response2.body.id;
           done();
+        })
+        .catch(err => {
+          console.log('error: ' + err);
         });
     });
 

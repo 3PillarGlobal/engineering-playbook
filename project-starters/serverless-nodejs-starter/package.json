@@ -6,7 +6,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "mocha --timeout=10000 src/backend/\\*\\*/\\*.test.js"
+    "test": "mocha --timeout=1350 src/backend/\\*\\*/\\*.test.js"
   },
   "dependencies": {
     "aws-sdk": "^2.12.0",
