@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to load products json data to DynamoDB
+Script to aggregate data and add data to dynamodb table
 """
 import json
 import sys
@@ -17,11 +17,17 @@ logger = logging.getLogger()
 
 
 def check_arg(args=None):
+    """
+    Method to get arguments
+    :param args:
+    :return: argument passed to the script
+    """
+
     parser = argparse.ArgumentParser(
-        description='Script to ingest product data from merged csv'
+        description='Script to ingest data from csv'
     )
     parser.add_argument('-t', '--table_name',
-                        help='Name of product table',
+                        help='Name of dynamodb table',
                         required=True,
                         )
 
@@ -110,12 +116,8 @@ if __name__ == '__main__':
 
     TABLE_NAME = check_arg()
 
-    if TABLE_NAME.split('_')[1] == 'korea':
-        CURRENCY = 'KRW'
-        CURRENCY_SYMBOL = '₩'
-    else:
-        CURRENCY = 'USD'
-        CURRENCY_SYMBOL = '$'
+    CURRENCY = 'USD'
+    CURRENCY_SYMBOL = '$'
 
     create_table()
 
@@ -136,8 +138,6 @@ if __name__ == '__main__':
     current_row = {}
     current_colors = {}
     current_sizes = {}
-    current_variants = {}
-    current_availability = {}
     products_data = {}
 
     for line in sys.stdin:
@@ -148,14 +148,12 @@ if __name__ == '__main__':
         code = data[0]
         colors = json.loads(data[1])
         sizes = json.loads(data[2])
-        availability = json.loads(data[3])
-        variants = json.loads(data[4])
-        min_price = data[5]
-        min_price_store_id = data[6]
+        min_price = data[3]
+        min_price_store_id = data[4]
 
         # row captures all the fixed data for a upc
-        row = json.loads(data[7])
-        upc = data[8].strip()
+        row = json.loads(data[5])
+        upc = data[6].strip()
 
         if not min_price:
             min_price = '0'
@@ -169,12 +167,6 @@ if __name__ == '__main__':
             "store_id": min_price_store_id
         }
 
-        # Updating the product data with availability
-        if upc not in current_availability:
-            current_availability[upc] = (availability)
-        else:
-            current_availability[upc].update(availability)
-
         if not current_code:
             # Loop initialization block
             # Setting current variables for all the variable in rows
@@ -183,7 +175,6 @@ if __name__ == '__main__':
             current_row = row
             current_min_price = min_price
             current_store_id = min_price_store_id
-            current_variants.update(variants)
             current_colors.update(colors)
             current_sizes.update(sizes)
 
@@ -202,8 +193,6 @@ if __name__ == '__main__':
             for key, data in products_data.items():
                 # Add common variants, color and sizes data to all products
                 # Add all accumulated product with same code to database
-                data['availability'] = current_availability[key]
-                data['variants'] = current_variants
                 data['colors_available'] = current_colors
                 data['sizes_available'] = current_sizes
                 add_product(data)
@@ -212,11 +201,8 @@ if __name__ == '__main__':
             current_code = code # New code
             current_upc = upc
             current_row = row
-            current_variants = variants
             current_colors = colors
             current_sizes = sizes
-            # Reset Availability data
-            current_availability[current_upc] = (availability)
 
             current_min_price = min_price
             current_store_id = min_price_store_id
@@ -236,8 +222,7 @@ if __name__ == '__main__':
         elif current_code == code and current_upc == upc:
 
             # If code and upc are same in the current row
-            # update only availability and min price
-            current_availability[current_upc].update(availability)
+            # update only min price
 
             if min_price < current_min_price:
                 current_min_price = min_price
@@ -271,7 +256,6 @@ if __name__ == '__main__':
             products_data[current_upc] = current_row
 
             # Update common data for same code
-            current_variants.update(variants)
             current_colors.update(colors)
             current_sizes.update(sizes)
 
@@ -281,8 +265,6 @@ if __name__ == '__main__':
 
     # Add remaining products to database
     for key, data in products_data.items():
-        data['availability'] = current_availability[key]
-        data['variants'] = current_variants
         data['colors_available'] = current_colors
         data['sizes_available'] = current_sizes
         add_product(data)

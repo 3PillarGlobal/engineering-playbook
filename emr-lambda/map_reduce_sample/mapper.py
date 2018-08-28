@@ -16,11 +16,16 @@ CURRENCY = 'USD'
 
 
 def check_arg(args=None):
+    """
+    Method to get arguments
+    :param args:
+    :return: argument passed to the script
+    """
     parser = argparse.ArgumentParser(
-        description='Script to ingest product data from merged csv'
+        description='Script to ingest data from csv'
     )
     parser.add_argument('-t', '--table_name',
-                        help='Name of product table',
+                        help='Name of dynamodb table',
                         required=True,
                         )
 
@@ -38,7 +43,7 @@ def mapper():
     for line in sys.stdin:
 
         logging.info(
-            'Read line from merged csv in mapper ' + str(datetime.now())
+            'Read line from csv in mapper ' + str(datetime.now())
         )
 
         row = list(csv.reader([line]))[0]
@@ -47,7 +52,6 @@ def mapper():
         DESCRIPTION = row[1]
         STYLE_CODE = str(row[10])
 
-        VARIANTS = {}
         COLOR_AVAILABLE = {}
         SIZES_AVAILABLE = {}
         DIVISION_CODE = str(row[2])
@@ -58,10 +62,6 @@ def mapper():
         SIZE_CODE = str(row[13])
         CLASS_NAME = row[7]
 
-        # Creating variants dictionary
-        # Mapping color_size to its upc
-        VARIANTS[str(row[11]) + '_' + str(row[13])] = str(row[0])
-
         # Creating colors dictionary
         # Mapping color codes to their names
         COLOR_AVAILABLE[str(row[11])] = str(row[12])
@@ -70,32 +70,10 @@ def mapper():
         # Mapping size codes to their names
         SIZES_AVAILABLE[str(row[13])] = str(row[14])
 
-        availability = {}
-
-        ACS_STYLE = row[15] if row[15] else ' '
 
         # Marking current store price as minimum price
         MIN_PRICE = row[19]
         MIN_PRICE_STORE_ID = str(row[16])
-
-        # Checking if inventory data exists which starts at row[15]
-        if row[16]: # store id
-            availability['store_' + str(row[16])] = {
-
-                "quantity": str(row[20]).strip(),
-                "price": {
-                    "currency": CURRENCY,
-                    "currency_sign": CURRENCY_SYMBOL,
-                    "value": str(row[18]) if str(row[18]) else ' '
-                },
-                "pos_price": {
-                    "currency": CURRENCY,
-                    "currency_sign": CURRENCY_SYMBOL,
-                    "value": str(row[19]) if str(row[19]) else ' '
-                },
-                "store_id": str(row[16]) if str(row[16]) else ' '
-
-            }
 
         # To handle non-empty string constraint of dynamo
         if MIN_PRICE is None:
@@ -121,14 +99,10 @@ def mapper():
                 'official': [],
                 'crowd_sourced': []
             },
-            'availability': {},
-            'acs_style': ACS_STYLE
         }
         data_to_write = str(STYLE_CODE + '-' + CLASS_CODE) + '\t' + \
                         json.dumps(COLOR_AVAILABLE) + '\t' + \
                         json.dumps(SIZES_AVAILABLE) + '\t' + \
-                        json.dumps(availability) + '\t' + \
-                        json.dumps(VARIANTS) + '\t' + \
                         str(MIN_PRICE) + '\t' + \
                         str(MIN_PRICE_STORE_ID) + '\t' + \
                         json.dumps(row) + '\t' + \
@@ -143,11 +117,7 @@ if __name__ == "__main__":
 
     TABLE_NAME = check_arg()
 
-    if TABLE_NAME.split('_')[1] == 'korea':
-        CURRENCY = 'KRW'
-        CURRENCY_SYMBOL = '₩'
-    else:
-        CURRENCY = 'USD'
-        CURRENCY_SYMBOL = '$'
+    CURRENCY = 'USD'
+    CURRENCY_SYMBOL = '$'
 
     mapper()
