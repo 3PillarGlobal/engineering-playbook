@@ -10,7 +10,6 @@ import boto3
 import logging
 import argparse
 
-# logging.basicConfig(filename='emr_out_1.log', level=logging.INFO)
 from botocore.exceptions import ClientError
 
 logger = logging.getLogger()
