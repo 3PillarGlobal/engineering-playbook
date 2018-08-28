@@ -1,0 +1,1 @@
+# Lambda to start EMR to run a map-reduce job
