@@ -15,25 +15,6 @@ CURRENCY_SYMBOL = '$'
 CURRENCY = 'USD'
 
 
-def check_arg(args=None):
-    """
-    Method to get arguments
-    :param args:
-    :return: argument passed to the script
-    """
-    parser = argparse.ArgumentParser(
-        description='Script to ingest data from csv'
-    )
-    parser.add_argument('-t', '--table_name',
-                        help='Name of dynamodb table',
-                        required=True,
-                        )
-
-    results = parser.parse_args(args)
-
-    return results.table_name
-
-
 def mapper():
     """
     Method to create json file from csv
@@ -72,7 +53,7 @@ def mapper():
 
 
         # Marking current store price as minimum price
-        MIN_PRICE = row[19]
+        MIN_PRICE = row[18]
         MIN_PRICE_STORE_ID = str(row[16])
 
         # To handle non-empty string constraint of dynamo
@@ -114,10 +95,5 @@ def mapper():
 
 
 if __name__ == "__main__":
-
-    TABLE_NAME = check_arg()
-
-    CURRENCY = 'USD'
-    CURRENCY_SYMBOL = '$'
 
     mapper()
