@@ -119,6 +119,9 @@ def lambda_handler(event, context):
 
                 ],
                 'Ec2KeyName': KEY_PAIR  # This allows us to ssh with the keypair
+
+                # Other available configurations for the instances
+
                 # 'KeepJobFlowAliveWhenNoSteps': True,
                 # 'EmrManagedSlaveSecurityGroup': 'sg-1234',
                 # 'EmrManagedMasterSecurityGroup': 'sg-1234',
