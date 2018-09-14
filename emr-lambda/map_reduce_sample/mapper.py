@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-""""""
+"""
+The input specified in the hadoop map reduce command will be passed to mapper.
+Mapper will take the input and organize the csv data and write the intermediate
+output on `stdout` as `\t` tab separated values.
+A `style of product` can be uniquely identified by column 6 and 10. So the
+first column of the mapper output will be made of column 6 and 10 so that the
+reducer can run aggregations on column 6 and 10.
+"""
 import argparse
 import csv
 import json
@@ -50,7 +57,6 @@ def mapper():
         # Creating sizes dictionary
         # Mapping size codes to their names
         SIZES_AVAILABLE[str(row[13])] = str(row[14])
-
 
         # Marking current store price as minimum price
         MIN_PRICE = row[18]

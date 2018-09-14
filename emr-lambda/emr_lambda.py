@@ -71,7 +71,9 @@ def get_latest_csv_file_path(bucket, prefix):
         return SimpleNamespace(success=False, error=str(e))
 
     sorted_keys = [
-        obj['Key'] for obj in sorted(objects, key=lambda obj: int(obj['LastModified'].strftime('%s')), reverse=True)
+        obj['Key'] for obj in sorted(objects, key=lambda obj: int(
+            obj['LastModified'].strftime('%s')
+        ), reverse=True)
     ]
 
     file_path = sorted_keys[0]

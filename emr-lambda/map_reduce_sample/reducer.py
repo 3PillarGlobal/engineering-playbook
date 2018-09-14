@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-Script to aggregate data and add data to dynamodb table
+Mapper output will be sorted by column 1 and passed to the reducer.
+Reducer will receive the SORTED output from mapper and aggregate colors, sizes
+and other details for a `style of product` and save to database.
 """
 import json
 import sys
