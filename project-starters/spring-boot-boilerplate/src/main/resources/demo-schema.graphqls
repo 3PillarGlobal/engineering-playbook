@@ -1,0 +1,14 @@
+type DocumentDto {
+  id: Long!
+  name: String
+  description: String
+  url: String
+}
+
+type Query {
+  getDocuments(pageNumber: Int, numberOfItems: Int): [DocumentDto]!
+}
+
+type Mutation {
+  addDocument(name: String!, description: String, url: String): DocumentDto!
+}

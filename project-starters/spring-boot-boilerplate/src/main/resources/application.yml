@@ -46,3 +46,9 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
 
 allowed.origins: "*"
+
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
