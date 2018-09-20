@@ -91,3 +91,10 @@ jacocoTestReport {
         html.destination "${buildDir}/jacocoHtml"
     }
 }
+
+test {
+    //systemProperty("spring.profiles.active", "test")
+    jacoco {
+        excludes = ['*MethodAccess']
+    }
+}

@@ -30,7 +30,7 @@ local.properties
 ######### OS related
 .DS_Store
 
-backend/out
+out
 backend/vm/.vagrant
 backend/vm/*.log
 **/*.swp
