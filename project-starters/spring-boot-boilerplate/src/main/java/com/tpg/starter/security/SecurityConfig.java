@@ -60,7 +60,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-ui.html")
                 .antMatchers("/webjars/**")
                 .antMatchers("/swagger-resources/**")
-                .antMatchers("/h2/**");
+                .antMatchers("/h2/**")
+                .antMatchers("/graphiql")
+                .antMatchers("/graphql/**");
     }
 
     @Bean(name = "corsFilter")

@@ -1,23 +1,16 @@
-package com.tpg.starter.controller.content
+package com.tpg.starter.controller.graphql
 
-import com.tpg.starter.controller.content.BaseControllerSpecification
+import com.tpg.starter.controller.BaseGraphQlSpecification
 import com.tpg.starter.service.DocumentService
 import com.tpg.starter.service.dto.DocumentDto
 import com.tpg.starter.service.repository.DocumentRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.web.servlet.MockMvc
 
 import static org.hamcrest.Matchers.hasSize
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class ContentControllerSpec extends BaseControllerSpecification {
-
-    private static final int FIRST_PAGE_NUMBER = 0
-
-    @Autowired
-    private MockMvc mockMvc
+class DocumentQuerySpec extends BaseGraphQlSpecification {
 
     @Autowired
     private DocumentService documentService
@@ -25,7 +18,7 @@ class ContentControllerSpec extends BaseControllerSpecification {
     @Autowired
     private DocumentRepository documentRepository
 
-    Long documentId1, documentId2, documentId3
+    private Long documentId1, documentId2, documentId3
 
     def setup() {
         DocumentDto documentDto1 = new DocumentDto()
@@ -53,33 +46,38 @@ class ContentControllerSpec extends BaseControllerSpecification {
 
     def 'getDocuments returns the expected paginated result'() {
 
-        when: 'requesting documents without pagination paramters'
-        def response1 = mockMvc.perform(get('/api/documents'))
+        when: 'requesting documents without pagination parameters'
+
+        String query = "query(\$pageNumber: Int = 0, \$numberOfItems: Int = 10)" +
+                "{ " +
+                "getDocuments(pageNumber: \$pageNumber, numberOfItems: \$numberOfItems) {" +
+                "id" +
+                "    name" +
+                "    description" +
+                "    url" +
+                "}" +
+                "}"
+
+        def response1 = performGraphQlPost(query)
 
         then: 'the first page containing the existing documents should be retrieved'
         response1.andExpect(status().isOk())
-                .andExpect(jsonPath('$.content', hasSize(3)))
-                .andExpect(jsonPath('$.content[0].id').value(documentId1))
-                .andExpect(jsonPath('$.content[1].id').value(documentId2))
-                .andExpect(jsonPath('$.content[2].id').value(documentId3))
-                .andExpect(jsonPath('$.totalElements').value(3))
-                .andExpect(jsonPath('$.totalPages').value(1))
-                .andExpect(jsonPath('$.numberOfElements').value(3))
-                .andExpect(jsonPath('$.number').value(FIRST_PAGE_NUMBER))
+                .andExpect(jsonPath('$.data.getDocuments', hasSize(3)))
+                .andExpect(jsonPath('$.data.getDocuments[0].id').value(documentId1))
+                .andExpect(jsonPath('$.data.getDocuments[1].id').value(documentId2))
+                .andExpect(jsonPath('$.data.getDocuments[2].id').value(documentId3))
 
         when: 'requesting second page with one item per page'
-        def response2 = mockMvc.perform(get('/api/documents')
-                                .param('pageNumber', "1")
-                                .param('numberOfItems', "1"))
+        def variables = new HashMap<String, Integer>()
+        variables.put("pageNumber", 1)
+        variables.put("numberOfItems", 1)
+
+        def response2 = performGraphQlPost(query, variables)
 
         then: 'the second page containing only the second document should be retrieved'
         response2.andExpect(status().isOk())
-                .andExpect(jsonPath('$.content', hasSize(1)))
-                .andExpect(jsonPath('$.content[0].id').value(documentId2))
-                .andExpect(jsonPath('$.totalElements').value(3))
-                .andExpect(jsonPath('$.totalPages').value(3))
-                .andExpect(jsonPath('$.numberOfElements').value(1))
-                .andExpect(jsonPath('$.number').value(FIRST_PAGE_NUMBER + 1))
+                .andExpect(jsonPath('$.data.getDocuments', hasSize(1)))
+                .andExpect(jsonPath('$.data.getDocuments[0].id').value(documentId2))
 
     }
 
