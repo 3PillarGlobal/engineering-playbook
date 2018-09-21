@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "lib": ["es5", "es6", "dom", "esnext"],
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types"],
+        "baseUrl": "src",
+        "paths": {
+            "components/*": ["components/*"],
+            "constants/*": ["constants/*"],
+            "style/*": ["style/*"]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
