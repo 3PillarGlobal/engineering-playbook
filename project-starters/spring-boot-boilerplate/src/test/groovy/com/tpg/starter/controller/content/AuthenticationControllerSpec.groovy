@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
-@ActiveProfiles("test-security-enabled")
+@ActiveProfiles("testEnabledSecurity")
 class AuthenticationControllerSpec extends Specification {
 
     @Autowired
