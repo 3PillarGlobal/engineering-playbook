@@ -48,17 +48,7 @@ class DocumentQuerySpec extends BaseGraphQlSpecification {
 
         when: 'requesting documents without pagination parameters'
 
-        String query = "query(\$pageNumber: Int = 0, \$numberOfItems: Int = 10)" +
-                "{ " +
-                "getDocuments(pageNumber: \$pageNumber, numberOfItems: \$numberOfItems) {" +
-                "id" +
-                "    name" +
-                "    description" +
-                "    url" +
-                "}" +
-                "}"
-
-        def response1 = performGraphQlPost(query)
+        def response1 = performGraphQlPost("graphql/get-documents.graphqls")
 
         then: 'the first page containing the existing documents should be retrieved'
         response1.andExpect(status().isOk())
@@ -68,11 +58,11 @@ class DocumentQuerySpec extends BaseGraphQlSpecification {
                 .andExpect(jsonPath('$.data.getDocuments[2].id').value(documentId3))
 
         when: 'requesting second page with one item per page'
-        def variables = new HashMap<String, Integer>()
+        def variables = newVariablesObject()
         variables.put("pageNumber", 1)
         variables.put("numberOfItems", 1)
 
-        def response2 = performGraphQlPost(query, variables)
+        def response2 = performGraphQlPost("graphql/get-documents.graphqls", variables)
 
         then: 'the second page containing only the second document should be retrieved'
         response2.andExpect(status().isOk())
