@@ -6,14 +6,12 @@ import com.tpg.starter.service.dto.DocumentDto
 import com.tpg.starter.service.repository.DocumentRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.web.servlet.MockMvc
-import spock.lang.Ignore
 
 import static org.hamcrest.Matchers.hasSize
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@Ignore
 class ContentControllerSpec extends BaseControllerSpecification {
 
     private static final int FIRST_PAGE_NUMBER = 0
@@ -71,8 +69,8 @@ class ContentControllerSpec extends BaseControllerSpecification {
 
         when: 'requesting second page with one item per page'
         def response2 = mockMvc.perform(get('/api/documents')
-                                .param('pageNumber', "1")
-                                .param('numberOfItems', "1"))
+                .param('pageNumber', "1")
+                .param('numberOfItems', "1"))
 
         then: 'the second page containing only the second document should be retrieved'
         response2.andExpect(status().isOk())

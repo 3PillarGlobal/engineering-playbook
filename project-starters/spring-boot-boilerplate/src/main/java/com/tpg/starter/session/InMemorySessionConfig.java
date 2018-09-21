@@ -6,7 +6,7 @@ import org.springframework.session.MapSessionRepository;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 
 @EnableSpringHttpSession
-@Profile({"local", "test"})
+@Profile({"local", "test", "test-security-enabled"})
 public class InMemorySessionConfig {
 
     @Bean
