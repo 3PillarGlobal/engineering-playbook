@@ -67,10 +67,17 @@ findbugs {
     ignoreFailures = true
     reportsDir = file("$project.buildDir/reports/findbugs")
     effort = 'max'
-    reportLevel = 'high'
+    reportLevel = 'low'
     includeFilter = file("$project.projectDir/misc/findbugs/findbugs-sonar.xml")
     excludeFilter = file("$project.projectDir/misc/findbugs/findbugs-sonar-exclude.xml")
 }
+
+//tasks.withType(FindBugs) {
+//    reports {
+//        xml.enabled = false
+//        html.enabled = true
+//    }
+//}
 
 pmd {
     ignoreFailures = true
