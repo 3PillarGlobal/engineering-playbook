@@ -64,14 +64,12 @@ checkstyle {
 findbugs {
     toolVersion = '3.0.1'
     sourceSets = [sourceSets.main]
-    ignoreFailures = false
+    ignoreFailures = true
     reportsDir = file("$project.buildDir/reports/findbugs")
     effort = 'max'
     reportLevel = 'high'
-    visitors = ['FindSqlInjection', 'SwitchFallthrough']
-    omitVisitors = ['FindNonShortCircuit']
-    includeFilter = file("$rootProject.projectDir/misc/findbugs/findbugs-sonar.xml")
-    excludeFilter = file("$rootProject.projectDir/misc/findbugs/findbugs-sonar-exclude.xml")
+    includeFilter = file("$project.projectDir/misc/findbugs/findbugs-sonar.xml")
+    excludeFilter = file("$project.projectDir/misc/findbugs/findbugs-sonar-exclude.xml")
 }
 
 pmd {

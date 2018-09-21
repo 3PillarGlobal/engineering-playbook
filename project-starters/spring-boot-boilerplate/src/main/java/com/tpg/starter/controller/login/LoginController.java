@@ -23,7 +23,7 @@ public class LoginController {
         return ResponseEntity.ok(userProfileDto);
     }
 
-    private int checkPmdIsWorking() {
+    public int checkPmdIsWorking() {
         int a = 2;
         int b = 4;
         if(a>b)
@@ -32,4 +32,22 @@ public class LoginController {
             return 0;
     }
 
+    public int checkFindBugsIsWorking() {
+       Object a = null;
+       int b = a.hashCode();
+       TestFindBugs tfb = new TestFindBugs();
+       tfb.equals(a);
+       return b;
+    }
+
+}
+
+class TestFindBugs {
+
+    private Integer id;
+
+    @Override
+    public boolean equals(Object obj) {
+        return id.equals(((TestFindBugs)obj).id);
+    }
 }
