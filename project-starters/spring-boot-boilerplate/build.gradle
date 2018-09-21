@@ -75,9 +75,10 @@ findbugs {
 }
 
 pmd {
-    ignoreFailures = false
+    ignoreFailures = true
     sourceSets = [sourceSets.main]
     reportsDir = file("$project.buildDir/reports/pmd")
+    ruleSets = ["java-basic", "java-braces"]
 }
 
 jacoco {

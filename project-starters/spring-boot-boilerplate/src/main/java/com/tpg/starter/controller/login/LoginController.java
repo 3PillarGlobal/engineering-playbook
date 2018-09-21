@@ -26,7 +26,10 @@ public class LoginController {
     private int checkPmdIsWorking() {
         int a = 2;
         int b = 4;
-        return a / b;
+        if(a>b)
+            return a / b;
+        else
+            return 0;
     }
 
 }
