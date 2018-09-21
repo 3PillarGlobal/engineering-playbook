@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpHeaders
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.util.Base64Utils
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import static org.junit.Assert.assertNotNull
@@ -17,6 +18,7 @@ import static org.hamcrest.Matchers.hasSize
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @AutoConfigureMockMvc
+@Ignore
 class LoginControllerSpec extends Specification {
 
     @Autowired
