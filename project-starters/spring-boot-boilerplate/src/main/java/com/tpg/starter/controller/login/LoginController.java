@@ -23,4 +23,10 @@ public class LoginController {
         return ResponseEntity.ok(userProfileDto);
     }
 
+    private int checkPmdIsWorking() {
+        int a = 2;
+        int b = 4;
+        return a / b;
+    }
+
 }
