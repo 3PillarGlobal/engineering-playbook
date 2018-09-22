@@ -23,4 +23,8 @@ public class DocumentQuery implements GraphQLQueryResolver {
         Page<DocumentDto> result = documentService.getDocuments(pageNumber, numberOfItems);
         return result.getContent();
     }
+
+    public DocumentDto getDocument(Long id) {
+        return documentService.getDocument(id);
+    }
 }

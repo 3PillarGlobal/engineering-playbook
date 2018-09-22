@@ -28,7 +28,7 @@ GraphQL integration:
 - list documents:
 ```
     query {
-      getDocuments(pageNumber: 0, numberOfItems:10){
+      getDocuments(pageNumber: 0, numberOfItems: 10){
         id
         name
         description
@@ -41,6 +41,17 @@ GraphQL integration:
     mutation {
       addDocument(name:"test doc", description:"test description", url:"http://someurl/test.pdf") {
         id
+      }
+    }
+```
+- get document by id:   
+```
+    {
+      getDocument(id: 1) {
+        id
+        name
+        description
+        url
       }
     }
 ```

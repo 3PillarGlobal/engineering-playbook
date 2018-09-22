@@ -29,6 +29,11 @@ public class DocumentService {
         return documentRepository.save(document).getId();
     }
 
+    public DocumentDto getDocument(Long id){
+        Document document = documentRepository.findOne(id);
+        return documentToDocumentDto().apply(document);
+    }
+
     private Function<Document, DocumentDto> documentToDocumentDto() {
         return document -> {
           DocumentDto documentDto = new DocumentDto();
