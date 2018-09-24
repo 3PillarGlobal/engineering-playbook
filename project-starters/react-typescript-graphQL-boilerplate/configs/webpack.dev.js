@@ -55,7 +55,6 @@ module.exports = {
     ],
     devtool: 'source-map',
     devServer: {
-        hot: true,
         historyApiFallback: true
     },
     plugins: [

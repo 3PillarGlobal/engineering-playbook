@@ -23,10 +23,6 @@ type Document = {
     description: string;
 };
 
-type Response = {
-    document: Document;
-};
-
 export interface GraphqlProps {
 }
 
