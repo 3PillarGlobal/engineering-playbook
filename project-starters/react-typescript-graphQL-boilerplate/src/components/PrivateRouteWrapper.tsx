@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { APP_CONFIG } from 'constants/AppConfig';
-import { ROUTES_CONFIG } from 'constants/RoutesConfig';
+import { APP_CONFIG } from '@constants/AppConfig';
+import { ROUTES_CONFIG } from '@constants/RoutesConfig';
 import { Route, RouteProps, Redirect } from 'react-router-dom';
 
-export class PrivateRouteWrapper extends React.Component<{} & RouteProps, undefined>  {
+export class PrivateRouteWrapper extends React.Component<any & RouteProps, undefined>  {
     token: string;
 
     constructor(props: RouteProps) {
@@ -20,7 +20,7 @@ export class PrivateRouteWrapper extends React.Component<{} & RouteProps, undefi
     }
 
     render() {
-        const { component: Component, exact, ...rest} = this.props;
+        const { component: Component, ...rest} = this.props;
 
         return (
             <Route

@@ -5,5 +5,6 @@ export const ROUTES_CONFIG = {
     BASE_URL: MOCK_BASE_URL,
     LOGIN: '/login',
     GRAPHQL: '/graphql',
+    GRAPHQL2: '/graphql2',
     HOME: '/home'
 };

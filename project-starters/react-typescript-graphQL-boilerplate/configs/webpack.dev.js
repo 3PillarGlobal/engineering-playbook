@@ -9,13 +9,15 @@ function srcPath(subDir) {
 module.exports = {
     mode: 'development',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json', '.mjs'],
+        extensions: ['.ts', '.tsx', '.js', '.json', '.mjs', '.gql', '.graphql'],
         mainFields: ['browser', 'main', 'module'],
         alias: {
-            components: srcPath("/components/"),
-            constants: srcPath("/constants/"),
-            style: srcPath("/style/")
-        }
+            "@components": srcPath("/components/"),
+            "@constants": srcPath("/constants/"),
+            "@style": srcPath("/style/"),
+            "@queries": srcPath("/queries")
+        },
+       
     },
     context: resolve(__dirname, '../src'),
     module: {

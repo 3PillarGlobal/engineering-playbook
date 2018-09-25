@@ -7,7 +7,11 @@
     "clean-up": "rm -rfd dist",
     "start:dev": "webpack-dev-server --host 0.0.0.0 --port 3000 --config=configs/webpack.dev.js",
     "start:prod": "yarn run clean-up && webpack -p --config=configs/webpack.prod.js && node express.js",
-    "test": "jest --coverage --config=configs/jest.json"
+    "test": "jest --coverage --config=configs/jest.json",
+    "codegen:generate": " apollo codegen:generate --queries=./src/**/*.ts --schema=./schema.json --target=typescript --outputFlat=./schemaTypes.ts",
+    "schema:download": "apollo schema:download --endpoint=http://localhost:8080/graphql",
+    "refresh:types": "yarn schema:download && yarn codegen:generate"
+
   },
   "author": "Alexandru.Sabou",
   "license": "ISC",
@@ -24,8 +28,8 @@
     "apollo-cache-inmemory": "^1.2.10",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
-    "react-apollo": "^2.1.11",
     "react": "^16.5.0",
+    "react-apollo": "^2.1.11",
     "react-dom": "^16.5.0",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.5.2",
@@ -52,6 +56,7 @@
     "webpack": "^4.18.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-middleware": "^3.3.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-graphql-loader": "^1.0.0"
   }
 }

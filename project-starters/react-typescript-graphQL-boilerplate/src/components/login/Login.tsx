@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import * as request from 'superagent';
-import { APP_CONFIG } from 'constants/AppConfig';
-import { API } from 'constants/ApiConfig';
-import { ROUTES_CONFIG } from 'constants/RoutesConfig';
+import { APP_CONFIG } from '@constants/AppConfig';
+import { API } from '@constants/ApiConfig';
+import { ROUTES_CONFIG } from '@constants/RoutesConfig';
 
 export interface LoginProps {
   history: any;
