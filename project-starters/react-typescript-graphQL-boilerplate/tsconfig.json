@@ -11,9 +11,10 @@
         "typeRoots": ["node_modules/@types"],
         "baseUrl": "src",
         "paths": {
-            "components/*": ["components/*"],
-            "constants/*": ["constants/*"],
-            "style/*": ["style/*"]
+            "@components/*": ["components/*"],
+            "@constants/*": ["constants/*"],
+            "@style/*": ["style/*"],
+            "@queries/*": ["queries/*"]
         }
     },
     "include": [

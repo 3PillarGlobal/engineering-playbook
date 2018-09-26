@@ -1,32 +1,10 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { GET_ALL_DOCUMENTS }  from '@queries/document';
 
-class DocumentsQuery extends Query<{}, DocumentQueryVariables> {}
-
-const GET_ALL_DOCUMENTS = gql `
-    {
-        getDocuments{
-            id
-            name
-            description
-          }
-    }
-`;
-
-interface DocumentQueryVariables {
-    document: Document;
-}
-type Document = {
-    id: number;
-    name: string;
-    description: string;
-};
-
-type Response = {
-    document: Document;
-};
-
+/*
+    Simple example of using a React Component with grapqhl for rendering a set of documents.
+*/
 export interface GraphqlProps {
 }
 
@@ -44,7 +22,7 @@ export default class GraphQL extends React.Component<GraphqlProps, undefined> {
                             <React.Fragment>
                                 <ul>
                                     { data.getDocuments.map((doc: any) => {
-                                        return (<li key={doc.id}>{doc.name} {doc.description}</li>);
+                                        return (<li key={doc.id}>{doc.name} {doc.description} {doc.url}</li>);
                                     })
                                     }
                                 </ul>

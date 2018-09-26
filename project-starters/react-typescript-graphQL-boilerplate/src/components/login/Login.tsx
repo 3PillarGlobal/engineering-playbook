@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import * as request from 'superagent';
-import { APP_CONFIG } from 'constants/AppConfig';
-import { API } from 'constants/ApiConfig';
-import { ROUTES_CONFIG } from 'constants/RoutesConfig';
+import { APP_CONFIG } from '@constants/AppConfig';
+import { API } from '@constants/ApiConfig';
+import { ROUTES_CONFIG } from '@constants/RoutesConfig';
 
 export interface LoginProps {
   history: any;
@@ -42,16 +42,20 @@ export class Login extends React.Component<LoginProps, LoginState> {
       this.setState(
         { [event.target.name]: event.target.value } as LoginState
       );
-
-      console.log('State: ', this.state);
     }
 
     _handleSubmit(event: any) {
       return request
                 .get(API.BE_LOGIN)
                 .auth(this.state.username, this.state.password)
-                .end(() => {
-                  alert('Something happend');
+                .then((response: any) => {
+                  localStorage.setItem(APP_CONFIG.TOKEN, response.headers[APP_CONFIG.TOKEN]);
+                  localStorage.setItem(APP_CONFIG.USER_FULL_NAME, `${response.body.firstName} ${response.body.lastName}`);
+                  localStorage.setItem(APP_CONFIG.USER_ROLES, response.body.roles);
+                  this.props.history.push(ROUTES_CONFIG.ROOT_URL);
+                })
+                .catch(error => {
+                  console.log('#TODO Treat errors');
                 });
     }
 

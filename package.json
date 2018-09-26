@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ts-transform-graphql-tag": "^0.1.3"
+  }
+}
