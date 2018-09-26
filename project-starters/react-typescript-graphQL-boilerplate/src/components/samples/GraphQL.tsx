@@ -21,7 +21,7 @@ export default class GraphQL extends React.Component<GraphqlProps, undefined> {
                         return (
                             <React.Fragment>
                                 <ul>
-                                    { data.getDocuments.map((doc: any) => {
+                                    { data.documents.map((doc: any) => {
                                         return (<li key={doc.id}>{doc.name} {doc.description} {doc.url}</li>);
                                     })
                                     }

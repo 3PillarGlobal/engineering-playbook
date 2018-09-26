@@ -13,7 +13,7 @@ export interface DocumentX {
     description: string;
 }
 interface Data {
-    Document?: DocumentX;
+    document?: DocumentX;
 }
 
 interface Variables {
@@ -32,9 +32,9 @@ class DocumentQL extends React.Component<{}, {documentId: number}> {
     render() {
         return (
             <DocumentQuery query={ GET_DOCUMENT } variables={{id: this.state.documentId}}>
-            {({ data: { Document = null } = {}, error, loading }) => (
+            {({ data: { document = null } = {}, error, loading }) => (
                 <DocumentView
-                    document= { Document }
+                    document= { document }
                     error= { error }
                     loading= { loading }
                     handleDocumentIdChange = { this.handleDocumentIdChange }

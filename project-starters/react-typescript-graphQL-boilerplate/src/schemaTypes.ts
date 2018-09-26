@@ -26,22 +26,63 @@ export interface AddDocumentVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: getDocument
+// GraphQL query operation: AllDocuments
 // ====================================================
 
-export interface getDocument_getDocument {
+export interface AllDocuments_documents {
   __typename: "DocumentDto";
   id: any;
   name: string | null;
   description: string | null;
 }
 
-export interface getDocument {
-  getDocument: getDocument_getDocument;
+export interface AllDocuments {
+  documents: (AllDocuments_documents | null)[];
 }
 
-export interface getDocumentVariables {
-  id: string;
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: Documents
+// ====================================================
+
+export interface Documents_documents {
+  __typename: "DocumentDto";
+  id: any;
+  name: string | null;
+  description: string | null;
+}
+
+export interface Documents {
+  documents: (Documents_documents | null)[];
+}
+
+export interface DocumentsVariables {
+  pageNumber?: number | null;
+  numberOfItems?: number | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: Document
+// ====================================================
+
+export interface Document_document {
+  __typename: "DocumentDto";
+  id: any;
+  name: string | null;
+  description: string | null;
+}
+
+export interface Document {
+  document: Document_document;
+}
+
+export interface DocumentVariables {
+  id?: number | null;
 }
 
 /* tslint:disable */

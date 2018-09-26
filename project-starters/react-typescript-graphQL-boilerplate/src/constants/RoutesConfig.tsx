@@ -6,5 +6,7 @@ export const ROUTES_CONFIG = {
     LOGIN: '/login',
     GRAPHQL: '/graphql',
     GRAPHQL2: '/graphql2',
+    GRAPHQL3: '/graphql3',
+    GRAPHQL4: '/graphql4',
     HOME: '/home'
 };
