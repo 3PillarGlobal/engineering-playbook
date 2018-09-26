@@ -8,10 +8,9 @@
     "start:dev": "webpack-dev-server --host 0.0.0.0 --port 3000 --config=configs/webpack.dev.js",
     "start:prod": "yarn run clean-up && webpack -p --config=configs/webpack.prod.js && node express.js",
     "test": "jest --coverage --config=configs/jest.json",
-    "codegen:generate": " apollo codegen:generate --queries=./src/**/*.ts --schema=./schema.json --target=typescript --outputFlat=./schemaTypes.ts",
+    "codegen:generate": " apollo codegen:generate --addTypename --queries=./src/**/*.ts --schema=./schema.json --target=typescript --outputFlat=./src/schemaTypes.ts",
     "schema:download": "apollo schema:download --endpoint=http://localhost:8080/graphql",
     "refresh:types": "yarn schema:download && yarn codegen:generate"
-
   },
   "author": "Alexandru.Sabou",
   "license": "ISC",

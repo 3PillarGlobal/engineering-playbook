@@ -10,4 +10,14 @@ export const GET_ALL_DOCUMENTS = gql `
     }
 `;
 
+export const GET_DOCUMENT = gql `
+    query Document($id: Int) {
+        Document(id: $id){
+            id
+            name
+            description
+          }
+    }
+`;
+
 

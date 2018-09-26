@@ -2,17 +2,9 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_ALL_DOCUMENTS }  from '@queries/document';
 
-class DocumentsQuery extends Query<{}, DocumentQueryVariables> {}
-
-interface DocumentQueryVariables {
-    document: Document;
-}
-type Document = {
-    id: number;
-    name: string;
-    description: string;
-};
-
+/*
+    Simple example of using a React Component with grapqhl for rendering a set of documents.
+*/
 export interface GraphqlProps {
 }
 

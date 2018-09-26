@@ -4,6 +4,7 @@ import '@style/global.scss';
 // Components imports
 import { Login } from '@components/login/Login';
 import { Home } from '@components/home/Home';
+import DocumentQL from '@components/samples/DocumentQL';
 
 // Routing imports
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
@@ -30,8 +31,8 @@ export default class App extends React.Component<{}, {}> {
                     <Switch>
                         <Route exact path={ ROUTES_CONFIG.LOGIN } component={ Login }></Route>
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL } component={ GraphQL }></PrivateRouteWrapper>
-                        {/* <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL2 } component={ GraphQLWithTypes } numberOfItems={2}></PrivateRouteWrapper> */}
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.HOME } component={ Home }></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL2 } component={ DocumentQL } ></PrivateRouteWrapper>
                         <PrivateRouteWrapper component={ Home }></PrivateRouteWrapper>
                     </Switch>
                 </Router>
