@@ -8,6 +8,7 @@ import DocumentQL from '@components/samples/DocumentQL';
 import DocumentHoC from '@components/samples/DocumentHoC';
 import DocumentGeneratedTypes from '@components/samples/DocumentGeneratedTypes';
 import DocumentMutation from '@components/samples/DocumentMutation';
+import DocumentMutationHoC from '@components/samples/DocumentMutationHoC';
 
 // Routing imports
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
@@ -39,6 +40,7 @@ export default class App extends React.Component<{}, {}> {
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL_3 } component={ DocumentHoC } ></PrivateRouteWrapper>
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL_4 } component={ DocumentGeneratedTypes } ></PrivateRouteWrapper>
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.MUTATION } component={ DocumentMutation } ></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.MUTATION_2 } component={ DocumentMutationHoC } ></PrivateRouteWrapper>
                         <PrivateRouteWrapper component={ Home }></PrivateRouteWrapper>
                     </Switch>
                 </Router>

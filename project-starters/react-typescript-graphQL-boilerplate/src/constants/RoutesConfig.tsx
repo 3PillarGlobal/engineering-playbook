@@ -9,5 +9,6 @@ export const ROUTES_CONFIG = {
     QUERY_QL_3: '/searchQl3',
     QUERY_QL_4: '/searchQl4',
     MUTATION: '/mutation',
+    MUTATION_2: '/mutation2',
     HOME: '/home'
 };

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import ADD_DOCUMENT from '../../mutations/createDocument';
 import GraphQL from '@components/samples/GraphQL';
