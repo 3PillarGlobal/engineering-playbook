@@ -1,0 +1,38 @@
+{
+  "name": "react-typescript-graphql-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@types/react-redux": "^6.0.9",
+    "apollo-boost": "^0.1.16",
+    "graphql": "^14.0.2",
+    "react": "^16.5.2",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "2.17.0",
+    "redux": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/graphql": "^14.0.0",
+    "@types/jest": "^23.3.2",
+    "@types/node": "^10.10.3",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router-dom": "^4.3.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "react-test-renderer": "^16.5.2",
+    "typescript": "^3.0.3"
+  }
+}
