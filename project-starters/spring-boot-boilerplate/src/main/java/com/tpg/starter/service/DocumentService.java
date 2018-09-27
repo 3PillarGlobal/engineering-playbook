@@ -49,7 +49,7 @@ public class DocumentService {
         return documentDto -> {
           Document document = new Document();
           document.setName(documentDto.getName());
-          document.setDescription(document.getDescription());
+          document.setDescription(documentDto.getDescription());
           document.setUrl(documentDto.getUrl());
           return document;
         };

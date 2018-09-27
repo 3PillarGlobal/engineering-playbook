@@ -49,5 +49,5 @@ class DocumentHoC extends React.Component<ChildProps<DocumentHopProps, Data, Var
 
 export default graphql<DocumentHopProps, Data, Variables>(
     GET_PAGINATED_DOCUMENTS,
-    { options: ({ numberOfItems = 2, pageNumber = 0}) => ({ variables: { numberOfItems, pageNumber } })
+    { options: ({ numberOfItems = 20, pageNumber = 0}) => ({ variables: { numberOfItems, pageNumber } })
   })(DocumentHoC);

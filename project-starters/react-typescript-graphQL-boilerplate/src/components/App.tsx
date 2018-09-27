@@ -7,6 +7,7 @@ import { Home } from '@components/home/Home';
 import DocumentQL from '@components/samples/DocumentQL';
 import DocumentHoC from '@components/samples/DocumentHoC';
 import DocumentGeneratedTypes from '@components/samples/DocumentGeneratedTypes';
+import DocumentMutation from '@components/samples/DocumentMutation';
 
 // Routing imports
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
@@ -32,11 +33,12 @@ export default class App extends React.Component<{}, {}> {
                 <Router>
                     <Switch>
                         <Route exact path={ ROUTES_CONFIG.LOGIN } component={ Login }></Route>
-                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL } component={ GraphQL }></PrivateRouteWrapper>
                         <PrivateRouteWrapper exact path={ ROUTES_CONFIG.HOME } component={ Home }></PrivateRouteWrapper>
-                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL2 } component={ DocumentQL } ></PrivateRouteWrapper>
-                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL3 } component={ DocumentHoC } ></PrivateRouteWrapper>
-                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.GRAPHQL4 } component={ DocumentGeneratedTypes } ></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL } component={ GraphQL }></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL_2 } component={ DocumentQL } ></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL_3 } component={ DocumentHoC } ></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.QUERY_QL_4 } component={ DocumentGeneratedTypes } ></PrivateRouteWrapper>
+                        <PrivateRouteWrapper exact path={ ROUTES_CONFIG.MUTATION } component={ DocumentMutation } ></PrivateRouteWrapper>
                         <PrivateRouteWrapper component={ Home }></PrivateRouteWrapper>
                     </Switch>
                 </Router>

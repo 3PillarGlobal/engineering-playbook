@@ -8,6 +8,9 @@ type DocumentDto {
 type Query {
   getDocuments(pageNumber: Int = 0, numberOfItems: Int = 10): [DocumentDto]!
   getDocument(id: ID!): DocumentDto!
+
+  document(id: Int): DocumentDto!
+  documents(pageNumber: Int = 0, numberOfItems: Int = 30): [DocumentDto]!
 }
 
 type Mutation {
