@@ -5,6 +5,12 @@ type DocumentDto {
   url: String
 }
 
+input DocumentInput {
+  name: String!
+  description: String
+  url: String
+}
+
 type Query {
   getDocuments(pageNumber: Int = 0, numberOfItems: Int = 10): [DocumentDto]!
   getDocument(id: ID!): DocumentDto!
@@ -12,4 +18,6 @@ type Query {
 
 type Mutation {
   addDocument(name: String!, description: String, url: String): DocumentDto!
+  createDocument(documentInput: DocumentInput!): DocumentDto!
+  updateDocument(id: ID!, documentInput: DocumentInput!): DocumentDto!
 }

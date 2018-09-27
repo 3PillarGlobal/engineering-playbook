@@ -24,7 +24,7 @@ public class DocumentService {
         return documents.map(document -> documentToDocumentDto().apply(document));
     }
 
-    public Long createDocument(DocumentDto documentDto) {
+    public Long createOrUpdateDocument(DocumentDto documentDto) {
         Document document = documentDtoToDocument().apply(documentDto);
         return documentRepository.save(document).getId();
     }
@@ -48,8 +48,9 @@ public class DocumentService {
     private Function<DocumentDto, Document> documentDtoToDocument() {
         return documentDto -> {
           Document document = new Document();
+          document.setId(documentDto.getId());
           document.setName(documentDto.getName());
-          document.setDescription(document.getDescription());
+          document.setDescription(documentDto.getDescription());
           document.setUrl(documentDto.getUrl());
           return document;
         };

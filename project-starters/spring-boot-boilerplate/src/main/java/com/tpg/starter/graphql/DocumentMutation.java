@@ -25,9 +25,33 @@ public class DocumentMutation implements GraphQLMutationResolver {
         documentDto.setName(name);
         documentDto.setDescription(description);
         documentDto.setUrl(url);
-        Long documentId = documentService.createDocument(documentDto);
+        Long documentId = documentService.createOrUpdateDocument(documentDto);
 
         documentDto.setId(documentId);
         return documentDto;
     }
+
+    public DocumentDto createDocument(DocumentInput documentInput) {
+        DocumentDto documentDto = new DocumentDto();
+        documentDto.setName(documentInput.getName());
+        documentDto.setDescription(documentInput.getDescription());
+        documentDto.setUrl(documentInput.getUrl());
+        Long documentId = documentService.createOrUpdateDocument(documentDto);
+
+        documentDto.setId(documentId);
+        return documentDto;
+    }
+
+    public DocumentDto updateDocument(Long documentId, DocumentInput documentInput) {
+        DocumentDto documentDto = new DocumentDto();
+        documentDto.setId(documentId);
+        documentDto.setName(documentInput.getName());
+        documentDto.setDescription(documentInput.getDescription());
+        documentDto.setUrl(documentInput.getUrl());
+
+        documentService.createOrUpdateDocument(documentDto);
+
+        return documentDto;
+    }
+
 }
