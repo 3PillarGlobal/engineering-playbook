@@ -3,3 +3,30 @@
 body {
     background-color: $white;
 }
+
+
+.input-mutation-container {
+    margin-bottom: 15px;
+
+    .mutation-label {
+        width: 113px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px
+    }
+    input {
+        height: 20px;
+    } 
+   
+}
+
+.mutation-submit {
+    border: 0;
+    background-color: #018786;
+    color: white;
+    border-radius: 7px;
+    height: 35px;
+    width: 100px;
+    font-size: 15px;
+    margin-left: 250px;
+}   

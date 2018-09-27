@@ -14,14 +14,15 @@ export default class GraphQL extends React.Component<GraphqlProps, undefined> {
             <React.Fragment>
                 <h1>GraphQL Sample</h1>
                 <Query query={ GET_ALL_DOCUMENTS }>
-                    {({ data, error, loading }) => {
+                    {({ data, error, loading, refetch }) => {
                         if (error) return 'The popo is real!';
                         if (loading) return 'Patience young skywalker...';
 
                         return (
                             <React.Fragment>
+                                <button onClick={() => { refetch(); }}>Refresh</button>
                                 <ul>
-                                    { data.getDocuments.map((doc: any) => {
+                                    { data.documents.map((doc: any) => {
                                         return (<li key={doc.id}>{doc.name} {doc.description} {doc.url}</li>);
                                     })
                                     }
