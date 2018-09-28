@@ -25,19 +25,19 @@ class DocumentQuerySpec extends BaseGraphQlSpecification {
         documentDto1.name = 'Document 1'
         documentDto1.description = 'Document 1 description'
         documentDto1.url = 'https://www.someurl.com/document1.pdf'
-        documentId1 = documentService.createDocument(documentDto1)
+        documentId1 = documentService.createOrUpdateDocument(documentDto1)
 
         DocumentDto documentDto2 = new DocumentDto()
         documentDto2.name = 'Document 2'
         documentDto2.description = 'Document 2 description'
         documentDto2.url = 'https://www.someurl.com/document2.pdf'
-        documentId2 = documentService.createDocument(documentDto2)
+        documentId2 = documentService.createOrUpdateDocument(documentDto2)
 
         DocumentDto documentDto3 = new DocumentDto()
         documentDto3.name = 'Document 3'
         documentDto3.description = 'Document 3 description'
         documentDto3.url = 'https://www.someurl.com/document3.pdf'
-        documentId3 = documentService.createDocument(documentDto3)
+        documentId3 = documentService.createOrUpdateDocument(documentDto3)
     }
 
     def cleanup() {
