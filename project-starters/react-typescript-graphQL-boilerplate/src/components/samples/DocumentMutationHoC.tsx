@@ -30,6 +30,7 @@ class DocumentMutationHoC extends React.Component<ChildProps<{}, AddDocument, Ad
 
     submitAddDocument = (event: any) => {
         event.preventDefault();
+
         this.props.mutate({
             variables: {...this.state}
         });

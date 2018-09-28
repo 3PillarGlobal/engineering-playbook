@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { GET_ALL_DOCUMENTS }  from '@queries/document';
-
 /*
     Simple example of using a React Component with grapqhl for rendering a set of documents.
 */
 export interface GraphqlProps {
 }
+
 
 export default class GraphQL extends React.Component<GraphqlProps, undefined> {
     render() {
