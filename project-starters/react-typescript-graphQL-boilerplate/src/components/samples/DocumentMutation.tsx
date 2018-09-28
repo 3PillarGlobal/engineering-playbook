@@ -49,7 +49,7 @@ export default class AddDocument extends React.Component<{}, AddDocumentState> {
       return (
           <React.Fragment>
                <Mutation mutation = { ADD_DOCUMENT }>
-                {(addDocument, { data }) => (
+                {(addDocument) => (
                     <div>
                         <form
                             onSubmit={(e) => this.submitAddDocument(e, addDocument)}>

@@ -19,10 +19,13 @@ interface Data {
 interface Variables {
     id: number;
 }
+interface DocumentQLProps {
+
+}
 
 class DocumentQuery extends Query<Data, Variables> {}
 
-class DocumentQL extends React.Component<{}, {documentId: number}> {
+class DocumentQL extends React.Component<DocumentQLProps, {documentId: number}> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -32,9 +35,9 @@ class DocumentQL extends React.Component<{}, {documentId: number}> {
     render() {
         return (
             <DocumentQuery query={ GET_DOCUMENT } variables={{id: this.state.documentId}}>
-            {({ data: { document = null } = {}, error, loading }) => (
+            {( {data, error, loading }) => (
                 <DocumentView
-                    document= { document }
+                    document= { (data as any).document  }
                     error= { error }
                     loading= { loading }
                     handleDocumentIdChange = { this.handleDocumentIdChange }
