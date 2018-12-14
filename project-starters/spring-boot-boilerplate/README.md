@@ -20,3 +20,38 @@ In order to check existing session in Redis:
 - <i>docker exec -it <container_id> redis-cli</i>
 - <i>KEYS *</i>
 - <i>FLUSHALL</i> - in order to delete all stored sessions
+
+GraphQL integration:
+- http://localhost:8080/graphql
+- http://localhost:8080/graphiql
+- GraphQL and GraphiQL endpoints security is currently disabled
+- list documents:
+```
+    query {
+      getDocuments(pageNumber: 0, numberOfItems: 10){
+        id
+        name
+        description
+        url
+      }
+    }
+```
+- create new document:
+```
+    mutation {
+      addDocument(name:"test doc", description:"test description", url:"http://someurl/test.pdf") {
+        id
+      }
+    }
+```
+- get document by id:   
+```
+    {
+      getDocument(id: 1) {
+        id
+        name
+        description
+        url
+      }
+    }
+```

@@ -1,5 +1,6 @@
 package com.tpg.starter.controller.content
 
+import com.tpg.starter.controller.content.BaseControllerSpecification
 import com.tpg.starter.service.DocumentService
 import com.tpg.starter.service.dto.DocumentDto
 import com.tpg.starter.service.repository.DocumentRepository
@@ -11,7 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class ContentControllerSpec extends com.tpg.starter.controller.content.BaseControllerSpecification {
+class ContentControllerSpec extends BaseControllerSpecification {
 
     private static final int FIRST_PAGE_NUMBER = 0
 
@@ -31,19 +32,19 @@ class ContentControllerSpec extends com.tpg.starter.controller.content.BaseContr
         documentDto1.name = 'Document 1'
         documentDto1.description = 'Document 1 description'
         documentDto1.url = 'https://www.someurl.com/document1.pdf'
-        documentId1 = documentService.createDocument(documentDto1)
+        documentId1 = documentService.createOrUpdateDocument(documentDto1)
 
         DocumentDto documentDto2 = new DocumentDto()
         documentDto2.name = 'Document 2'
         documentDto2.description = 'Document 2 description'
         documentDto2.url = 'https://www.someurl.com/document2.pdf'
-        documentId2 = documentService.createDocument(documentDto2)
+        documentId2 = documentService.createOrUpdateDocument(documentDto2)
 
         DocumentDto documentDto3 = new DocumentDto()
         documentDto3.name = 'Document 3'
         documentDto3.description = 'Document 3 description'
         documentDto3.url = 'https://www.someurl.com/document3.pdf'
-        documentId3 = documentService.createDocument(documentDto3)
+        documentId3 = documentService.createOrUpdateDocument(documentDto3)
     }
 
     def cleanup() {
@@ -68,8 +69,8 @@ class ContentControllerSpec extends com.tpg.starter.controller.content.BaseContr
 
         when: 'requesting second page with one item per page'
         def response2 = mockMvc.perform(get('/api/documents')
-                                .param('pageNumber', "1")
-                                .param('numberOfItems', "1"))
+                .param('pageNumber', "1")
+                .param('numberOfItems', "1"))
 
         then: 'the second page containing only the second document should be retrieved'
         response2.andExpect(status().isOk())

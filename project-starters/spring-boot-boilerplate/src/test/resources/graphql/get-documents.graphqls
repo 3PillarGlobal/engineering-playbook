@@ -1,0 +1,8 @@
+query($pageNumber: Int = 0, $numberOfItems: Int = 10) {
+  getDocuments(pageNumber: $pageNumber, numberOfItems: $numberOfItems) {
+    id
+    name
+    description
+    url
+  }
+}

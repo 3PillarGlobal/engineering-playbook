@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es6",
+        "esModuleInterop": true,
+        "jsx": "react",
+        "lib": ["es5", "es6", "dom", "esnext"],
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types"],
+        "baseUrl": "src",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@components/*": ["components/*"],
+            "@constants/*": ["constants/*"],
+            "@style/*": ["style/*"],
+            "@queries/*": ["queries/*"]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

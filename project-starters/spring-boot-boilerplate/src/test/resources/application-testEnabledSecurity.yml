@@ -1,0 +1,7 @@
+security:
+  basic:
+    enabled: true
+
+flyway:
+  clean-on-validation-error: true
+  locations: classpath:db/migration,classpath:db/test
