@@ -1,0 +1,42 @@
+{
+  // "parser": "@typescript-eslint/parser",
+	// "parserOptions": {
+  //   "project": "./tsconfig.json",
+  //   "tsconfigRootDir": "."
+	// },
+  // // "settings": {
+  //   "import/resolver": {
+  //     "alias": {
+  //       "map": [
+  //         ["@assets", "./assets"],
+  //         ["@components", "./src/components"],
+  //         ["@navigations", "./src/navigations"],
+  //         ["@services", "./src/services"],
+  //         ["@styles", "./src/styles"],
+  //         ["@utils", "./src/utils"],
+  //         ["@constants", "./src/constants"],
+  //         ["@store", "./src/store"]
+  //       ],
+  //       "extensions": [".ts", ".json", ".tsx", ".js"]
+  //     }
+  //   }
+  // },
+  "extends": [
+      "airbnb-typescript",
+      "airbnb/hooks",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "ignorePatterns": ["babel.config.js", "node_modules/"],
+  "rules": {
+      "comma-style": ["off", "last"],
+      "@typescript-eslint/no-use-before-define": 0,
+      "react/prefer-stateless-function": 0,
+      "import/extensions": 0,
+      "comma-dangle": 0,
+      "react/destructuring-assignment": 0,
+      "@typescript-eslint/require-await": 0,
+      "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }]
+  }
+}
