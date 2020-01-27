@@ -8,6 +8,7 @@ const AuthenticationNavigation = createStackNavigator(
     Register: { screen: Register }
   },
   {
+    headerMode: 'none',
     initialRouteName: 'Login'
   }
 );
