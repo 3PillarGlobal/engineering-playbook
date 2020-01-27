@@ -7,27 +7,22 @@ import {
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
-
 import { STATE_TYPE } from '../constants/store';
 
-type AuthenticationLoadingProps = {
+interface AuthenticationLoadingProps extends AuthenticationStoreProps {
   navigation: NavigationStackProp;
+}
+
+interface AuthenticationStoreProps {
   token: string;
-};
+}
 
 class AuthenticationLoading extends React.Component<AuthenticationLoadingProps> {
-  componentDidMount(): void {
-    this.bootstrapAsync();
-  }
-
-  // Fetch the token from storage then navigate to our appropriate place
-  bootstrapAsync = async (): Promise<void> => {
+  componentDidUpdate(): void {
     const userToken = this.props.token;
 
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-  };
+  }
 
   // Render any loading content that you like here
   render(): JSX.Element {
@@ -38,11 +33,10 @@ class AuthenticationLoading extends React.Component<AuthenticationLoadingProps> 
       </View>
     );
   }
-  
 }
 
-const mapStateToProps = state => {
-  let persistedState = state[STATE_TYPE.persisted];
+const mapStateToProps = (state): AuthenticationStoreProps => {
+  const persistedState = state[STATE_TYPE.persisted];
 
   return {
     token: persistedState.authentication.token

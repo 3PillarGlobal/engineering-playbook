@@ -1,4 +1,9 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers,
+  compose
+} from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { AsyncStorage } from 'react-native';

@@ -1,9 +1,9 @@
 {
-  // "parser": "@typescript-eslint/parser",
-	// "parserOptions": {
-  //   "project": "./tsconfig.json",
-  //   "tsconfigRootDir": "."
-	// },
+  "parser": "@typescript-eslint/parser",
+	"parserOptions": {
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+	},
   // // "settings": {
   //   "import/resolver": {
   //     "alias": {
