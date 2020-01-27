@@ -9,7 +9,7 @@ import {
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
-import * as actions from '../store/actions/';
+import * as actions from '../store/actions';
 
 type LoginProps = {
   navigation: NavigationStackProp;
@@ -93,15 +93,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => {
-      return dispatch(actions.authentication.login(email, password)).catch(err => {
-        throw err;
-      });
-    }
+    login: (email, password): void => dispatch(actions.authentication.login(email, password)).catch((err) => {
+      throw err;
+    })
   };
 };
 
 export default connect(null, mapDispatchToProps)(Login);
-

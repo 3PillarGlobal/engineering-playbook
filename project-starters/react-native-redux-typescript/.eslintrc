@@ -32,11 +32,15 @@
   "rules": {
       "comma-style": ["off", "last"],
       "@typescript-eslint/no-use-before-define": 0,
+      "@typescript-eslint/explicit-function-return-type": 0,
       "react/prefer-stateless-function": 0,
       "import/extensions": 0,
       "comma-dangle": 0,
       "react/destructuring-assignment": 0,
       "@typescript-eslint/require-await": 0,
-      "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }]
+      "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
+      "react/jsx-one-expression-per-line": 0,
+      "import/prefer-default-export": 0,
+      "max-len": ["error", { "code": 120 }]
   }
 }
