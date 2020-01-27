@@ -1,8 +1,4 @@
 {
-  // "baseUrl": ".",
-  // "paths": {
-  //     "@store/*": ["./src/store/*"]
-  // },
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",

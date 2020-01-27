@@ -4,13 +4,16 @@ import {
   StyleSheet,
   View,
   Button,
-  TextInput,
-  AsyncStorage
+  TextInput
 } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
+import { connect } from 'react-redux';
+
+import * as actions from '../store/actions/';
 
 type LoginProps = {
   navigation: NavigationStackProp;
+  login: (email: string, password: string) => void;
 };
 
 type LoginState = {
@@ -18,7 +21,7 @@ type LoginState = {
   password: string;
 };
 
-export default class Login extends React.Component<LoginProps, LoginState> {
+class Login extends React.Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
     super(props);
 
@@ -43,7 +46,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     // Mocked login. Use redux
     try {
       if (email.length > 0 && password.length > 0) {
-        AsyncStorage.setItem('userToken', 'batman');
+        this.props.login(email, password);
         this.props.navigation.navigate('App');
       }
     } catch (error) {
@@ -89,3 +92,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email, password) => {
+      return dispatch(actions.authentication.login(email, password)).catch(err => {
+        throw err;
+      });
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Login);
+

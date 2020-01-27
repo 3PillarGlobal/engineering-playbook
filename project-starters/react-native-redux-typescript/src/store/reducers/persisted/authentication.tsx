@@ -23,13 +23,15 @@ const loginRequest = (state: AuthenticationState): AuthenticationState => {
 const loginSuccess = (state: AuthenticationState, action): AuthenticationState => {
   return {
     ...state,
-    isLoginPending: false
+    isLoginPending: false,
+    token: action.userData.token
   };
 };
 
 export default (state: AuthenticationState = initialState, action): AuthenticationState => {
   switch (action.type) {
     case ACTIONS_TYPES.LOGIN_ACTION_REQUEST: return loginRequest(state);
+    case ACTIONS_TYPES.LOGIN_ACTION_SUCCESS: return loginSuccess(state, action);
     default:
       return state;
   }

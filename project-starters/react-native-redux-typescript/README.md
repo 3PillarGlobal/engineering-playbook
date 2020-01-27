@@ -8,7 +8,7 @@ In order to start the project on both types of devices iOS and android emualator
 Recomand installing VSCode with eslint and prettier formatter plugins.
 
 ### Prerequisites
-
+Node >= 12
 Android Studio for emulating Android Devices
 XCode for emulation iOS Devices
 
@@ -28,7 +28,7 @@ yarn install
 yarn start
 ```
 
-Open browser on http://localhost:19002/ to view expo console.
+Open browser on http://localhost:19001/ to view expo console.
 (Android) Press -> Run on Android device/emulator while Emulator is running to deploy and start application
 (iOS) Press -> Run on iOS deploy and start application
 
@@ -37,6 +37,7 @@ Open browser on http://localhost:19002/ to view expo console.
 yarn debug
 ```
 Using react-native-debugger for debugging remotely. Debugger will start together with the application when running in debug mode.
+Application MUST be started on port 19001 in order for the Debugger to connect to it.
 
 ## Running the tests
 

@@ -3,7 +3,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { AsyncStorage } from 'react-native';
 
-// import { STATE_TYPE } from '../constants/store';
 import { STATE_TYPE } from '../constants/store';
 import persistedReducer from './reducers/root-persist-index';
 
