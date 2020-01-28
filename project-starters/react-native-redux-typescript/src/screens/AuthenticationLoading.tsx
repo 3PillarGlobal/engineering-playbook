@@ -18,18 +18,16 @@ interface AuthenticationStoreProps {
 }
 
 class AuthenticationLoading extends React.Component<AuthenticationLoadingProps> {
-  componentDidUpdate(): void {
+  componentDidMount(): void {
     const userToken = this.props.token;
 
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   }
 
-  // Render any loading content that you like here
   render(): JSX.Element {
     return (
       <View>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
+        <ActivityIndicator style={{ height: '100%' }} />
       </View>
     );
   }

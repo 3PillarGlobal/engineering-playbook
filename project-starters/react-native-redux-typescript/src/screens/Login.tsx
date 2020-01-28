@@ -43,7 +43,6 @@ class Login extends React.Component<LoginProps, LoginState> {
   onLogin = async (): Promise<void> => {
     const { email, password } = this.state;
 
-    // Mocked login. Use redux
     try {
       if (email.length > 0 && password.length > 0) {
         this.props.login(email, password);

@@ -1,5 +1,11 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Image } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  Image
+} from 'react-native';
 
 export default class Album extends React.Component<any, any> {
   constructor(props) {
