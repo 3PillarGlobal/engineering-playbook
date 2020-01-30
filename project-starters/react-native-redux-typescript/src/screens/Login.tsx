@@ -3,12 +3,15 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Button,
-  TextInput
+  TouchableOpacity,
+  TextInput,
+  Text,
+  StatusBar
 } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
+import Header from '../components/Header';
 import * as actions from '../store/actions';
 
 type LoginProps = {
@@ -59,25 +62,42 @@ class Login extends React.Component<LoginProps, LoginState> {
     const { email, password } = this.state;
 
     return (
-      <View style={styles.container}>
-        <View style={{ margin: 10 }}>
-          <TextInput
-            value={email}
-            placeholder="Enter email"
-            autoCapitalize="none"
-            onChangeText={this.handleEmailChange}
-          />
+      <View style={{ flex: 1 }}>
+        <View style={{ marginTop: StatusBar.currentHeight }}>
+          <Header headerText="Login" />
         </View>
-        <View style={{ margin: 10 }}>
-          <TextInput
-            value={password}
-            placeholder="Enter password"
-            secureTextEntry
-            onChangeText={this.handlePasswordChange}
-          />
+        <View style={styles.container}>
+          <View style={{ margin: 10 }}>
+            <TextInput
+              style={styles.input}
+              value={email}
+              placeholder="Enter email"
+              autoCapitalize="none"
+              onChangeText={this.handleEmailChange}
+            />
+          </View>
+          <View style={{ margin: 10 }}>
+            <TextInput
+              style={styles.input}
+              value={password}
+              placeholder="Enter password"
+              secureTextEntry
+              onChangeText={this.handlePasswordChange}
+            />
+          </View>
+          <TouchableOpacity
+            style={{ ...styles.button, marginTop: 25 }}
+            onPress={this.onLogin}
+          >
+            <Text style={styles.text}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.onLogin}
+          >
+            <Text style={styles.text}>Register</Text>
+          </TouchableOpacity>
         </View>
-        <Button title="Login" onPress={this.onLogin} />
-        <Button title="Go to Signup" onPress={this.goToSignup} />
       </View>
     );
   }
@@ -86,9 +106,25 @@ class Login extends React.Component<LoginProps, LoginState> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'cadetblue',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  input: {
+    backgroundColor: 'white',
+    width: 250,
+    padding: 12
+  },
+  button: {
+    alignItems: 'center',
+    width: 150,
+    marginBottom: 15,
+    padding: 15,
+    backgroundColor: '#A1785F',
+    color: 'white'
+  },
+  text: {
+    color: 'white'
   }
 });
 

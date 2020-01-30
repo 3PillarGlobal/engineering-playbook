@@ -6,14 +6,19 @@ import {
 } from 'react-native';
 import Logo from '../../assets/header_logo';
 
-export default class Header extends React.Component {
+interface HeaderProps {
+  headerText: string;
+}
+export default class Header extends React.Component<HeaderProps> {
   render() {
+    const { headerText } = this.props;
+
     return (
       <View style={styles.headStyle}>
         <View style={styles.logoStyle}>
           <Logo />
         </View>
-        <Text style={styles.headText}>Home</Text>
+        <Text style={styles.headText}> { headerText } </Text>
       </View>
     );
   }
