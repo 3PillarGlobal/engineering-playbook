@@ -1,5 +1,6 @@
 import { ACTIONS_TYPES } from '../../constants/store';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const loginRequest = (email, password) => Promise.resolve({ data: { token: 'batman' } });
 
 export const logout = () => (dispatch) => {

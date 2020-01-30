@@ -35,15 +35,14 @@ class Header extends React.Component<HeaderProps & HeaderActions> {
           <Logo />
         </View>
         <Text style={styles.headText}> {headerText} </Text>
-        {this.props.navigation.state.routeName !== 'Login'
-          && (
+        {this.props.navigation.state.routeName !== 'Login' && (
           <TouchableOpacity
             style={{ marginLeft: 'auto' }}
             onPress={this.onLogout}
           >
             <Text style={styles.text}>Logout</Text>
           </TouchableOpacity>
-          )}
+        )}
       </View>
     );
   }

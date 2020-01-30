@@ -46,7 +46,7 @@ N/A
 ### And coding style tests
 
 ESlint added in project
-Prettier formatter
+Prettier formatter - to make sure Prettier formats on save. Insert "editor.formatOnSave": true into your User Settings in VSCode.
 
 ## Deployment
 
