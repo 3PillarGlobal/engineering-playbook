@@ -28,7 +28,7 @@
       "plugin:@typescript-eslint/recommended",
       "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react-native"],
   "ignorePatterns": ["babel.config.js", "node_modules/"],
   "rules": {
       "comma-style": ["off", "last"],

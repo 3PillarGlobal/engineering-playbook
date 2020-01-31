@@ -1,7 +1,6 @@
 
 import React from 'react';
 import {
-  StyleSheet,
   View,
   TouchableOpacity,
   TextInput,
@@ -11,8 +10,9 @@ import {
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
-import Header from '../components/Header';
-import * as actions from '../store/actions';
+import styles from './login.style';
+import Header from '../../components/header/header';
+import * as actions from '../../store/actions';
 
 type LoginProps = {
   navigation: NavigationStackProp;
@@ -103,30 +103,6 @@ class Login extends React.Component<LoginProps, LoginState> {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'cadetblue',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  input: {
-    backgroundColor: 'white',
-    width: 250,
-    padding: 12
-  },
-  button: {
-    alignItems: 'center',
-    width: 150,
-    marginBottom: 15,
-    padding: 15,
-    backgroundColor: '#A1785F',
-    color: 'white'
-  },
-  text: {
-    color: 'white'
-  }
-});
 
 const mapDispatchToProps = (dispatch) => {
   return {

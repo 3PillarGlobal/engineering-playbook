@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity
@@ -9,8 +8,9 @@ import { connect } from 'react-redux';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
 
-import Logo from '../../assets/header_logo';
-import * as actions from '../store/actions';
+import styles from './header.style';
+import Logo from '../../../assets/header_logo';
+import * as actions from '../../store/actions';
 
 interface HeaderActions {
   logout: () => void;
@@ -20,7 +20,7 @@ interface HeaderProps {
   navigation: NavigationStackProp;
   headerText: string;
 }
-class Header extends React.Component<HeaderProps & HeaderActions> {
+class Header extends React.Component<HeaderProps & HeaderActions, {}> {
   private onLogout = (): void => {
     this.props.logout();
     this.props.navigation.navigate('Auth');
@@ -48,28 +48,6 @@ class Header extends React.Component<HeaderProps & HeaderActions> {
   }
 }
 
-const styles = StyleSheet.create({
-  headText: {
-    color: '#ffffff',
-    fontSize: 20,
-    marginLeft: 15
-  },
-  headStyle: {
-    backgroundColor: '#35605a',
-    flexDirection: 'row',
-    borderColor: '#000000',
-    padding: 25,
-    paddingLeft: 15
-  },
-  logoStyle: {
-    width: 25,
-    height: 25,
-  },
-  text: {
-    color: 'white',
-    textAlign: 'center'
-  }
-});
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -77,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(withNavigation(Header));
+export default connect(null, mapDispatchToProps)(withNavigation(Header)) as React.ComponentType;

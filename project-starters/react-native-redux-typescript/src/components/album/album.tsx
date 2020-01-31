@@ -3,11 +3,20 @@ import {
   ScrollView,
   View,
   Text,
-  StyleSheet,
   Image
 } from 'react-native';
+import styles from './album.style';
 
-export default class Album extends React.Component<any, any> {
+type AlbumItems = {
+  title: string;
+  url: string;
+  id: string;
+};
+
+interface AlbumState {
+  items: AlbumItems[];
+}
+export default class Album extends React.Component<{}, AlbumState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,15 +48,3 @@ export default class Album extends React.Component<any, any> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    color: '#ffffff',
-    fontSize: 20,
-    margin: 15
-  },
-  itemText: {
-    marginBottom: 15,
-    fontSize: 15,
-  }
-});

@@ -6,7 +6,7 @@ import {
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
-import { STATE_TYPE } from '../constants/store';
+import { STATE_TYPE } from '../../constants/store';
 
 interface AuthenticationLoadingProps extends AuthenticationStoreProps {
   navigation: NavigationStackProp;
