@@ -41,7 +41,7 @@ Application MUST be started on port 19001 in order for the Debugger to connect t
 
 ## Running the tests
 
-N/A
+jest test
 
 ### And coding style tests
 
@@ -54,7 +54,7 @@ N/A
 
 ## Environment and profiles
 
-N/A
+Supports only development and production.
 
 ## Built With
 
