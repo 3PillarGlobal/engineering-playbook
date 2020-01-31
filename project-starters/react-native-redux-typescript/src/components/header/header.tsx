@@ -12,15 +12,16 @@ import styles from './header.style';
 import Logo from '../../../assets/header_logo';
 import * as actions from '../../store/actions';
 
-interface HeaderActions {
+interface DispatchedActions {
   logout: () => void;
 }
-
-interface HeaderProps {
+interface NavigationProps {
   navigation: NavigationStackProp;
+}
+interface HeaderProps {
   headerText: string;
 }
-class Header extends React.Component<HeaderProps & HeaderActions, {}> {
+class Header extends React.Component<HeaderProps & NavigationProps & DispatchedActions, {}> {
   private onLogout = (): void => {
     this.props.logout();
     this.props.navigation.navigate('Auth');
@@ -55,4 +56,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(withNavigation(Header)) as React.ComponentType;
+export default connect(null, mapDispatchToProps)(
+  withNavigation(Header)
+) as React.ComponentType<HeaderProps>;

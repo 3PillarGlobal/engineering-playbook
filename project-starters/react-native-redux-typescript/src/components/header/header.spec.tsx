@@ -5,10 +5,18 @@ import configureStore from 'redux-mock-store';
 
 import Header from './header';
 
-jest.mock('react-navigation', () => { return { withNavigation: (component) => component }; });
+jest.mock('react-navigation', () => {
+  return {
+    withNavigation: (Component) => (props) => (
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <Component navigation={mockProps.navigation} {...props} />
+    )
+  };
+});
 
 const mockStore = configureStore([]);
 const mockProps = {
+  headerText: 'Header',
   navigation: {
     navigate: jest.fn(),
     state: {
@@ -28,7 +36,7 @@ describe('Header component ', () => {
 
     headerComponent = renderer.create(
       <Provider store={store}>
-        <Header navigation={mockProps.navigation} headerText="Header" />
+        <Header headerText={mockProps.headerText} />
       </Provider>
     );
   });
