@@ -1,5 +1,14 @@
 import { Dispatch } from 'react';
 
+export type User = {
+  id?: number;
+  token: string;
+  name: string;
+  email: string;
+  phone: string;
+  username?: string;
+};
+
 export enum ACTIONS_TYPES {
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_ERROR = 'LOGIN_ERROR',
@@ -9,9 +18,7 @@ export enum ACTIONS_TYPES {
 
 export interface LoginSuccess {
   type: typeof ACTIONS_TYPES.LOGIN_SUCCESS;
-  userData: {
-    token: string;
-  };
+  userData: User & { token: string };
 }
 
 export interface LoginError {
@@ -29,8 +36,6 @@ export interface LogoutRequest {
 
 export type AuthenticationActions = LoginSuccess | LoginError | LoginPending | LogoutRequest;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const loginRequest = (email: string, password: string) => Promise.resolve({ data: { token: 'batman' } });
 
 export const logout = (): LogoutRequest => {
   return {
@@ -39,24 +44,26 @@ export const logout = (): LogoutRequest => {
 };
 
 export function login(email: string, password: string) {
-  return (dispatch: Dispatch<AuthenticationActions>) => {
+  return async (dispatch: Dispatch<AuthenticationActions>): Promise<User> => {
     dispatch({
       type: ACTIONS_TYPES.LOGIN_PENDING
     });
 
-    const promise = loginRequest(email, password);
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const users: User[] = await response.json();
+    const user = users.find((u: User) => u.email === email && u.username === password);
 
-    promise.then((response) => {
+    if (user) {
       dispatch({
         type: ACTIONS_TYPES.LOGIN_SUCCESS,
-        userData: response.data
+        userData: {
+          ...user,
+          token: user.id + user.username
+        }
       });
-    }).catch((error) => {
-      dispatch({
-        type: ACTIONS_TYPES.LOGIN_ERROR,
-        error
-      });
-    });
+      return user;
+    }
+    throw new Error('No user found');
   };
 }
 

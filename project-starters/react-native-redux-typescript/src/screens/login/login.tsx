@@ -1,5 +1,5 @@
 
-import React, { Dispatch } from 'react';
+import React from 'react';
 import {
   View,
   TouchableOpacity,
@@ -9,15 +9,16 @@ import {
 } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 
 import styles from './login.style';
 import Header from '../../components/header/header';
 import * as actions from '../../store/actions';
-import { AuthenticationActions } from '../../store/actions/authentication';
+import { AuthenticationActions, User } from '../../store/actions/authentication';
 
 type LoginProps = {
   navigation: NavigationStackProp;
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string) => Promise<User>;
 };
 
 type LoginState = {
@@ -44,12 +45,17 @@ class Login extends React.Component<LoginProps, LoginState> {
     this.setState({ password });
   };
 
-  onLogin = async (): Promise<void> => {
+  onLogin = async () => {
     const { email, password } = this.state;
 
     if (email.length > 0 && password.length > 0) {
-      this.props.login(email, password);
-      this.props.navigation.navigate('App');
+      this.props.login(email, password)
+        .then(() => {
+          this.props.navigation.navigate('App');
+        })
+        .catch(() => {
+          alert('Invalid user');
+        });
     }
   };
 
@@ -101,9 +107,9 @@ class Login extends React.Component<LoginProps, LoginState> {
 }
 
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AuthenticationActions>) => {
   return {
-    login: (email: string, password: string) => actions.authentication.login(email, password)
+    login: async (email: string, password: string): Promise<User> => dispatch(actions.authentication.login(email, password))
   };
 };
 

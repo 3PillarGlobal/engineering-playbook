@@ -5,8 +5,7 @@ import {
 } from 'react-native';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
-
-import { STATE_TYPE } from '../../constants/store';
+import { AppState } from '../../store/store';
 
 interface AuthenticationLoadingProps extends AuthenticationStoreProps {
   navigation: NavigationStackProp;
@@ -32,11 +31,11 @@ class AuthenticationLoading extends React.Component<AuthenticationLoadingProps> 
   }
 }
 
-const mapStateToProps = (state): AuthenticationStoreProps => {
-  const persistedState = state[STATE_TYPE.persisted];
+const mapStateToProps = (state: AppState): AuthenticationStoreProps => {
+  const persistedState = state.persisted;
 
   return {
-    token: persistedState.authentication.token
+    token: persistedState.authentication.user.token
   };
 };
 
