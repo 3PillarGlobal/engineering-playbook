@@ -7,10 +7,12 @@ import {
 import { connect } from 'react-redux';
 import { NavigationStackProp } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
+import { Dispatch } from 'redux';
 
 import styles from './header.style';
 import Logo from '../../../assets/header_logo';
 import * as actions from '../../store/actions';
+import { AuthenticationActions } from '../../store/actions/authentication';
 
 interface DispatchedActions {
   logout: () => void;
@@ -50,12 +52,12 @@ class Header extends React.Component<HeaderProps & NavigationProps & DispatchedA
 }
 
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<AuthenticationActions>): DispatchedActions => {
   return {
-    logout: (): void => dispatch(actions.authentication.logout())
+    logout: () => dispatch(actions.authentication.logout())
   };
 };
 
-export default connect(null, mapDispatchToProps)(
+export default connect<{}, DispatchedActions, void>(null, mapDispatchToProps)(
   withNavigation(Header)
 ) as React.ComponentType<HeaderProps>;

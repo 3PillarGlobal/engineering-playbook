@@ -7,7 +7,7 @@ import Header from './header';
 
 jest.mock('react-navigation', () => {
   return {
-    withNavigation: (Component) => (props) => (
+    withNavigation: (Component: typeof React.Component) => (props: JSX.IntrinsicAttributes) => (
       // eslint-disable-next-line react/jsx-props-no-spreading
       <Component navigation={mockProps.navigation} {...props} />
     )
@@ -27,7 +27,7 @@ const mockProps = {
 
 describe('Header component ', () => {
   let store;
-  let headerComponent;
+  let headerComponent: renderer.ReactTestRenderer;
 
   beforeEach(() => {
     store = mockStore({

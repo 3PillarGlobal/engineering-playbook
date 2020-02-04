@@ -1,4 +1,4 @@
-import { ACTIONS_TYPES } from '../../../constants/store';
+import { AuthenticationActions, ACTIONS_TYPES } from '../../actions/authentication';
 
 export type AuthenticationState = {
   readonly isLoginPending: boolean;
@@ -12,33 +12,21 @@ const initialState: AuthenticationState = {
   token: ''
 };
 
-
-const loginRequest = (state: AuthenticationState): AuthenticationState => {
-  return {
-    ...state,
-    isLoginPending: true
-  };
-};
-
-const loginSuccess = (state: AuthenticationState, action): AuthenticationState => {
-  return {
-    ...state,
-    isLoginPending: false,
-    token: action.userData.token
-  };
-};
-
-const logoutRequest = () => {
-  return {
-    ...initialState
-  };
-};
-
-export default (state: AuthenticationState = initialState, action): AuthenticationState => {
+export default (state: AuthenticationState = initialState, action: AuthenticationActions): AuthenticationState => {
   switch (action.type) {
-    case ACTIONS_TYPES.LOGIN_ACTION_REQUEST: return loginRequest(state);
-    case ACTIONS_TYPES.LOGIN_ACTION_SUCCESS: return loginSuccess(state, action);
-    case ACTIONS_TYPES.LOGOUT_ACTION_REQUEST: return logoutRequest();
+    case ACTIONS_TYPES.LOGIN_PENDING:
+      return {
+        ...state,
+        isLoginPending: true
+      };
+    case ACTIONS_TYPES.LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoginPending: false,
+        token: action.userData.token
+      };
+    case ACTIONS_TYPES.LOGOUT_REQUEST:
+      return { ...initialState };
     default:
       return state;
   }

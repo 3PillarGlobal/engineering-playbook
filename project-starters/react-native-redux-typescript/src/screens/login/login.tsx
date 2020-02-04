@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Dispatch } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import styles from './login.style';
 import Header from '../../components/header/header';
 import * as actions from '../../store/actions';
+import { AuthenticationActions } from '../../store/actions/authentication';
 
 type LoginProps = {
   navigation: NavigationStackProp;
@@ -46,13 +47,9 @@ class Login extends React.Component<LoginProps, LoginState> {
   onLogin = async (): Promise<void> => {
     const { email, password } = this.state;
 
-    try {
-      if (email.length > 0 && password.length > 0) {
-        this.props.login(email, password);
-        this.props.navigation.navigate('App');
-      }
-    } catch (error) {
-      //
+    if (email.length > 0 && password.length > 0) {
+      this.props.login(email, password);
+      this.props.navigation.navigate('App');
     }
   };
 
@@ -104,11 +101,9 @@ class Login extends React.Component<LoginProps, LoginState> {
 }
 
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = () => {
   return {
-    login: (email, password): void => dispatch(actions.authentication.login(email, password)).catch((err) => {
-      throw err;
-    })
+    login: (email: string, password: string) => actions.authentication.login(email, password)
   };
 };
 
