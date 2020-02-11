@@ -10,7 +10,7 @@ import styles from './album.style';
 type AlbumItems = {
   title: string;
   imageURL: string;
-  id: string;
+  itemId: string;
 };
 
 interface AlbumState {
@@ -39,7 +39,7 @@ export default class Album extends React.Component<{}, AlbumState> {
       <ScrollView style={{ flex: 1 }}>
         {this.state.items
           && this.state.items.map((item) => (
-            <View style={styles.itemContainer} key={item.id}>
+            <View style={styles.itemContainer} key={item.itemId}>
               <Text style={styles.itemText}>{item.title}</Text>
               <Image source={{ uri: item.imageURL }} style={{ height: 300, width: '100%' }} />
             </View>

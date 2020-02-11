@@ -11,7 +11,7 @@ export default StyleSheet.create({
     padding: 10
   },
   navSectionStyle: {
-    backgroundColor: 'lightgrey'
+    backgroundColor: 'white'
   },
   sectionHeadingStyle: {
     paddingVertical: 10,

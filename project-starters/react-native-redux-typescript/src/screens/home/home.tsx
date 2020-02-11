@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { StyleSheet, SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-native';
 
 import Header from '../../components/header/header';
 import Album from '../../components/album/album';
+import styles from './home.style';
 
 export default function Home(): JSX.Element {
   return (
@@ -13,10 +14,3 @@ export default function Home(): JSX.Element {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight
-  }
-});

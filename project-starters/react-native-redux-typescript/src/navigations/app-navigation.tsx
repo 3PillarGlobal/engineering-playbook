@@ -7,6 +7,7 @@ import Tasks from '../screens/tasks/tasks';
 import Resources from '../screens/resources/resources';
 import NavigationSideMenu from '../components/navigation-side-menu/navigation-side-menu';
 import SettingsSideMenu from '../components/settings-side-menu/settings-side-menu';
+import Settings from '../screens/settings/settings';
 
 const DrawerSettingNavigation = createDrawerNavigator(
   {
@@ -14,7 +15,8 @@ const DrawerSettingNavigation = createDrawerNavigator(
     Leads: { screen: Leads },
     Tasks: { screen: Tasks },
     Activity: { screen: Activity },
-    Resources: { screen: Resources }
+    Resources: { screen: Resources },
+    Settings: { screen: Settings }
   },
   {
     contentComponent: SettingsSideMenu,

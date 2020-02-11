@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { DrawerContentComponentProps } from 'react-navigation-drawer';
+
 import styles from './navigation-side-menu.style';
 
 export default class NavigationSideMenu extends React.Component<DrawerContentComponentProps, {}> {
