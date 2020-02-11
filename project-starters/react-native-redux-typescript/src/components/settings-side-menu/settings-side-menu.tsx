@@ -20,18 +20,19 @@ interface NavigationProps {
   navigation: NavigationDrawerProp;
 }
 
-class SettingsSideMenu extends React.Component<DrawerContentComponentProps & DispatchedActions & NavigationProps, SettingsSideMenuState> {
-  static getDerivedStateFromProps(props: DrawerContentComponentProps & DispatchedActions & NavigationProps) {
+type NavigationPropsExtend = NavigationProps & DrawerContentComponentProps;
+
+class SettingsSideMenu extends React.Component<NavigationPropsExtend & DispatchedActions, SettingsSideMenuState> {
+  static getDerivedStateFromProps(props: NavigationPropsExtend & DispatchedActions) {
     return {
-      currentRouteName: props.navigation.state.routeName
+      currentRouteName: props.activeItemKey
     };
   }
 
   constructor(props: DrawerContentComponentProps & DispatchedActions & NavigationProps) {
     super(props);
-
     this.state = {
-      currentRouteName: props.navigation.state.routeName
+      currentRouteName: props.activeItemKey
     };
   }
 
