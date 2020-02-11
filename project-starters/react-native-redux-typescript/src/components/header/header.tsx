@@ -1,3 +1,4 @@
+/* eslint-disable react/state-in-constructor */
 import React from 'react';
 import {
   View,
@@ -5,9 +6,10 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationStackProp } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
+import { NavigationDrawerProp } from 'react-navigation-drawer';
 import { Dispatch } from 'redux';
+import Octicons from 'react-native-vector-icons/Octicons';
 
 import styles from './header.style';
 import Logo from '../../../assets/header_logo';
@@ -18,15 +20,44 @@ interface DispatchedActions {
   logout: () => void;
 }
 interface NavigationProps {
-  navigation: NavigationStackProp;
+  navigation: NavigationDrawerProp;
 }
 interface HeaderProps {
   headerText: string;
 }
-class Header extends React.Component<HeaderProps & NavigationProps & DispatchedActions, {}> {
+interface HeaderState {
+  isAuthRoute: boolean;
+}
+
+class Header extends React.Component<HeaderProps & NavigationProps & DispatchedActions, HeaderState> {
+  constructor(props: HeaderProps & NavigationProps & DispatchedActions) {
+    super(props);
+
+    this.state = {
+      isAuthRoute: props.navigation.state.routeName === 'Login'
+    };
+  }
+
+  static getDerivedStateFromProps(props: HeaderProps & NavigationProps & DispatchedActions) {
+    return {
+      isAuthRoute: props.navigation.state.routeName === 'Login'
+    };
+  }
+
+
   private onLogout = (): void => {
     this.props.logout();
     this.props.navigation.navigate('Auth');
+  };
+
+  private openMenuDrawer = () => {
+    // This is shit :(
+    // TODO find something else
+    (this.props.navigation.dangerouslyGetParent().dangerouslyGetParent() as NavigationDrawerProp).openDrawer();
+  };
+
+  private openSettingsDrawer = () => {
+    this.props.navigation.openDrawer();
   };
 
   render() {
@@ -34,18 +65,29 @@ class Header extends React.Component<HeaderProps & NavigationProps & DispatchedA
 
     return (
       <View style={styles.headStyle}>
+        <View style={{ paddingRight: 16 }}>
+          {!this.state.isAuthRoute && <Octicons name="three-bars" size={30} color="white" onPress={this.openMenuDrawer} />}
+        </View>
         <View style={styles.logoStyle}>
           <Logo />
         </View>
-        <Text style={styles.headText}> {headerText} </Text>
-        {this.props.navigation.state.routeName !== 'Login' && (
-          <TouchableOpacity
-            style={{ marginLeft: 'auto' }}
-            onPress={this.onLogout}
-          >
-            <Text style={styles.text}>Logout</Text>
-          </TouchableOpacity>
-        )}
+        <View style={{ paddingTop: 0, flexDirection: 'row' }}>
+          <Text style={styles.headText}> {headerText} </Text>
+        </View>
+        <View style={{
+          paddingTop: 0, flexDirection: 'row', justifyContent: 'space-between', marginLeft: 'auto'
+        }}
+        >
+          {!this.state.isAuthRoute && (
+            <TouchableOpacity
+              style={{ marginLeft: 'auto' }}
+              onPress={this.onLogout}
+            >
+              <Text style={{ ...styles.text, paddingTop: 6, paddingRight: 16 }}>Logout</Text>
+            </TouchableOpacity>
+          )}
+          {!this.state.isAuthRoute && <Octicons name="three-bars" size={30} color="white" onPress={this.openSettingsDrawer} />}
+        </View>
       </View>
     );
   }

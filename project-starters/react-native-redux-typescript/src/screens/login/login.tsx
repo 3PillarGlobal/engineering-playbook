@@ -54,6 +54,7 @@ class Login extends React.Component<LoginProps, LoginState> {
           this.props.navigation.navigate('App');
         })
         .catch(() => {
+          // eslint-disable-next-line no-alert
           alert('Invalid user');
         });
     }
