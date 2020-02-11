@@ -9,7 +9,7 @@ import styles from './album.style';
 
 type AlbumItems = {
   title: string;
-  url: string;
+  imageURL: string;
   id: string;
 };
 
@@ -17,7 +17,7 @@ interface AlbumState {
   items: AlbumItems[];
 }
 export default class Album extends React.Component<{}, AlbumState> {
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = {
       items: []
@@ -25,11 +25,11 @@ export default class Album extends React.Component<{}, AlbumState> {
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/photos')
+    fetch('https://9gag.com/v1/featured-posts')
       .then((response) => response.json())
       .then((response) => {
         this.setState({
-          items: response.slice(1, 25)
+          items: response.data.items
         });
       });
   }
@@ -41,7 +41,7 @@ export default class Album extends React.Component<{}, AlbumState> {
           && this.state.items.map((item) => (
             <View style={styles.itemContainer} key={item.id}>
               <Text style={styles.itemText}>{item.title}</Text>
-              <Image source={{ uri: item.url }} style={{ height: 300, width: '100%' }} />
+              <Image source={{ uri: item.imageURL }} style={{ height: 300, width: '100%' }} />
             </View>
           ))}
       </ScrollView>
