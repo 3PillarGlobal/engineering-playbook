@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component  should using Snapshots 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#35605a",
+      "borderColor": "#000000",
+      "flexDirection": "row",
+      "padding": 25,
+      "paddingLeft": 15,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "height": 25,
+        "width": 25,
+      }
+    }
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight="100%"
+      bbWidth="100%"
+      focusable={false}
+      height="100%"
+      id="svg12"
+      meetOrSlice={0}
+      minX={-11.5}
+      minY={-10.232}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          undefined,
+          Object {
+            "opacity": 1,
+          },
+          Object {
+            "flex": 0,
+            "height": "100%",
+            "width": "100%",
+          },
+        ]
+      }
+      vbHeight={20.511086}
+      vbWidth={23}
+      version={1.1}
+      width="100%"
+      xml="
+<?xml version=\\"1.0\\" encoding=\\"UTF-8\\" standalone=\\"no\\"?>
+<svg
+   xmlns:dc=\\"http://purl.org/dc/elements/1.1/\\"
+   xmlns:cc=\\"http://creativecommons.org/ns#\\"
+   xmlns:rdf=\\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\\"
+   xmlns:svg=\\"http://www.w3.org/2000/svg\\"
+   xmlns=\\"http://www.w3.org/2000/svg\\"
+   height=\\"20.511086\\"
+   width=\\"23\\"
+   id=\\"svg12\\"
+   version=\\"1.1\\"
+   viewBox=\\"-11.5 -10.232 23 20.511086\\">
+  <metadata
+     id=\\"metadata18\\">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about=\\"\\">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource=\\"http://purl.org/dc/dcmitype/StillImage\\" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id=\\"defs16\\" />
+  <circle
+     style=\\"fill:#61dafb\\"
+     cy=\\"0.023542816\\"
+     cx=\\"0\\"
+     id=\\"circle2\\"
+     r=\\"2.05\\" />
+  <g
+     transform=\\"translate(0,0.02354282)\\"
+     style=\\"fill:none;stroke:#61dafb\\"
+     id=\\"g10\\">
+    <ellipse
+       cy=\\"0\\"
+       cx=\\"0\\"
+       id=\\"ellipse4\\"
+       ry=\\"4.1999998\\"
+       rx=\\"11\\" />
+    <ellipse
+       cy=\\"0\\"
+       cx=\\"0\\"
+       id=\\"ellipse6\\"
+       transform=\\"rotate(60)\\"
+       ry=\\"4.1999998\\"
+       rx=\\"11\\" />
+    <ellipse
+       cy=\\"0\\"
+       cx=\\"0\\"
+       id=\\"ellipse8\\"
+       transform=\\"rotate(120)\\"
+       ry=\\"4.1999998\\"
+       rx=\\"11\\" />
+  </g>
+</svg>
+"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsCc="http://creativecommons.org/ns#"
+      xmlnsDc="http://purl.org/dc/elements/1.1/"
+      xmlnsRdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlnsSvg="http://www.w3.org/2000/svg"
+    >
+      <RNSVGGroup
+        fill={
+          Array [
+            0,
+            4278190080,
+          ]
+        }
+        fillOpacity={1}
+        fillRule={1}
+        font={Object {}}
+        matrix={
+          Array [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+          ]
+        }
+        opacity={1}
+        originX={0}
+        originY={0}
+        propList={Array []}
+        rotation={0}
+        scaleX={1}
+        scaleY={1}
+        skewX={0}
+        skewY={0}
+        stroke={null}
+        strokeDasharray={null}
+        strokeDashoffset={null}
+        strokeLinecap={0}
+        strokeLinejoin={0}
+        strokeMiterlimit={4}
+        strokeOpacity={1}
+        strokeWidth={1}
+        vectorEffect={0}
+        x={0}
+        y={0}
+      >
+        <RNSVGDefs />
+        <RNSVGCircle
+          cx={0}
+          cy={0.023542816}
+          fill={
+            Array [
+              0,
+              4284603131,
+            ]
+          }
+          fillOpacity={1}
+          fillRule={1}
+          matrix={
+            Array [
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+            ]
+          }
+          name="circle2"
+          opacity={1}
+          originX={0}
+          originY={0}
+          propList={
+            Array [
+              "fill",
+            ]
+          }
+          r={2.05}
+          rotation={0}
+          scaleX={1}
+          scaleY={1}
+          skewX={0}
+          skewY={0}
+          stroke={null}
+          strokeDasharray={null}
+          strokeDashoffset={null}
+          strokeLinecap={0}
+          strokeLinejoin={0}
+          strokeMiterlimit={4}
+          strokeOpacity={1}
+          strokeWidth={1}
+          vectorEffect={0}
+          x={0}
+          y={0}
+        />
+        <RNSVGGroup
+          fill={null}
+          fillOpacity={1}
+          fillRule={1}
+          font={Object {}}
+          matrix={
+            Array [
+              1,
+              0,
+              0,
+              1,
+              0,
+              0.02354282,
+            ]
+          }
+          name="g10"
+          opacity={1}
+          originX={0}
+          originY={0}
+          propList={
+            Array [
+              "fill",
+              "stroke",
+            ]
+          }
+          rotation={0}
+          scaleX={1}
+          scaleY={1}
+          skewX={0}
+          skewY={0}
+          stroke={
+            Array [
+              0,
+              4284603131,
+            ]
+          }
+          strokeDasharray={null}
+          strokeDashoffset={null}
+          strokeLinecap={0}
+          strokeLinejoin={0}
+          strokeMiterlimit={4}
+          strokeOpacity={1}
+          strokeWidth={1}
+          vectorEffect={0}
+          x={0}
+          y={0}
+        >
+          <RNSVGEllipse
+            cx={0}
+            cy={0}
+            fill={
+              Array [
+                0,
+                4278190080,
+              ]
+            }
+            fillOpacity={1}
+            fillRule={1}
+            matrix={
+              Array [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+              ]
+            }
+            name="ellipse4"
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={Array []}
+            rotation={0}
+            rx={11}
+            ry={4.1999998}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          />
+          <RNSVGEllipse
+            cx={0}
+            cy={0}
+            fill={
+              Array [
+                0,
+                4278190080,
+              ]
+            }
+            fillOpacity={1}
+            fillRule={1}
+            matrix={
+              Array [
+                0.5000000000000001,
+                0.8660254037844386,
+                -0.8660254037844386,
+                0.5000000000000001,
+                0,
+                0,
+              ]
+            }
+            name="ellipse6"
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={Array []}
+            rotation={0}
+            rx={11}
+            ry={4.1999998}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          />
+          <RNSVGEllipse
+            cx={0}
+            cy={0}
+            fill={
+              Array [
+                0,
+                4278190080,
+              ]
+            }
+            fillOpacity={1}
+            fillRule={1}
+            matrix={
+              Array [
+                -0.4999999999999998,
+                0.8660254037844387,
+                -0.8660254037844387,
+                -0.4999999999999998,
+                0,
+                0,
+              ]
+            }
+            name="ellipse8"
+            opacity={1}
+            originX={0}
+            originY={0}
+            propList={Array []}
+            rotation={0}
+            rx={11}
+            ry={4.1999998}
+            scaleX={1}
+            scaleY={1}
+            skewX={0}
+            skewY={0}
+            stroke={null}
+            strokeDasharray={null}
+            strokeDashoffset={null}
+            strokeLinecap={0}
+            strokeLinejoin={0}
+            strokeMiterlimit={4}
+            strokeOpacity={1}
+            strokeWidth={1}
+            vectorEffect={0}
+            x={0}
+            y={0}
+          />
+        </RNSVGGroup>
+      </RNSVGGroup>
+    </RNSVGSvgView>
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "#ffffff",
+        "fontSize": 20,
+        "marginLeft": 15,
+      }
+    }
+  >
+     
+    Header
+     
+  </Text>
+</View>
+`;
