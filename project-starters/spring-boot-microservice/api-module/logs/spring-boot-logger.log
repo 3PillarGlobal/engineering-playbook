@@ -178,3 +178,63 @@
 2020-02-17 10:23:38,831 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_4
 2020-02-17 10:23:38,871 INFO org.springframework.boot.StartupInfoLogger [main] Started ServiceApplicationTests in 4.918 seconds (JVM running for 7.9)
 2020-02-17 10:23:39,017 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-18 12:55:20,439 INFO org.springframework.boot.StartupInfoLogger [main] Starting ServiceApplicationTests on clj-mb-277 with PID 16525 (started by adina.contiu in /Users/adina.contiu/Development/sandbox/reactNative/engineering-playbook/project-starters/spring-boot-microservice/api-module)
+2020-02-18 12:55:20,442 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-18 12:55:20,443 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-02-18 12:55:23,581 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 3 endpoint(s) beneath base path ''
+2020-02-18 12:55:23,782 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-18 12:55:24,109 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-18 12:55:24,427 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-02-18 12:55:24,469 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-02-18 12:55:24,514 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-02-18 12:55:24,750 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_1
+2020-02-18 12:55:24,754 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_2
+2020-02-18 12:55:24,758 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_3
+2020-02-18 12:55:24,761 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_4
+2020-02-18 12:55:24,797 INFO org.springframework.boot.StartupInfoLogger [main] Started ServiceApplicationTests in 5.372 seconds (JVM running for 8.366)
+2020-02-18 12:55:24,896 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-18 12:55:45,414 INFO org.springframework.boot.StartupInfoLogger [main] Starting ServiceApplicationTests on clj-mb-277 with PID 16585 (started by adina.contiu in /Users/adina.contiu/Development/sandbox/reactNative/engineering-playbook/project-starters/spring-boot-microservice/api-module)
+2020-02-18 12:55:45,417 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-18 12:55:45,418 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-02-18 12:55:48,105 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 3 endpoint(s) beneath base path ''
+2020-02-18 12:55:48,326 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-18 12:55:48,656 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-18 12:55:48,987 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-02-18 12:55:49,030 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-02-18 12:55:49,079 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-02-18 12:55:49,332 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_1
+2020-02-18 12:55:49,338 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_2
+2020-02-18 12:55:49,343 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_3
+2020-02-18 12:55:49,350 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_4
+2020-02-18 12:55:49,399 INFO org.springframework.boot.StartupInfoLogger [main] Started ServiceApplicationTests in 4.709 seconds (JVM running for 7.49)
+2020-02-18 12:55:49,523 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-18 13:23:04,503 INFO org.springframework.boot.StartupInfoLogger [main] Starting ServiceApplicationTests on clj-mb-277 with PID 18328 (started by adina.contiu in /Users/adina.contiu/Development/sandbox/reactNative/engineering-playbook/project-starters/spring-boot-microservice/api-module)
+2020-02-18 13:23:04,507 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-18 13:23:04,509 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-02-18 13:23:15,487 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 3 endpoint(s) beneath base path ''
+2020-02-18 13:23:16,119 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-18 13:23:16,977 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-18 13:23:17,719 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-02-18 13:23:17,797 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-02-18 13:23:17,942 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-02-18 13:23:18,504 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_1
+2020-02-18 13:23:18,510 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_2
+2020-02-18 13:23:18,515 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_3
+2020-02-18 13:23:18,521 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_4
+2020-02-18 13:23:18,597 INFO org.springframework.boot.StartupInfoLogger [main] Started ServiceApplicationTests in 16.437 seconds (JVM running for 25.117)
+2020-02-18 13:23:24,016 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-18 14:49:06,948 INFO org.springframework.boot.StartupInfoLogger [main] Starting ServiceApplicationTests on clj-mb-277 with PID 23782 (started by adina.contiu in /Users/adina.contiu/Development/sandbox/reactNative/engineering-playbook/project-starters/spring-boot-microservice/api-module)
+2020-02-18 14:49:06,950 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-18 14:49:06,951 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-02-18 14:49:09,452 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 3 endpoint(s) beneath base path ''
+2020-02-18 14:49:09,643 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-02-18 14:49:09,954 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-18 14:49:10,248 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-02-18 14:49:10,298 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-02-18 14:49:10,341 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-02-18 14:49:10,551 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_1
+2020-02-18 14:49:10,554 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_2
+2020-02-18 14:49:10,557 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_3
+2020-02-18 14:49:10,560 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: handleUsingGET_4
+2020-02-18 14:49:10,590 INFO org.springframework.boot.StartupInfoLogger [main] Started ServiceApplicationTests in 4.304 seconds (JVM running for 7.061)
+2020-02-18 14:49:10,691 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'

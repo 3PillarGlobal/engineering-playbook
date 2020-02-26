@@ -34,3 +34,17 @@ mvn verify
 ```
 
 > Note: The minimum code coverage is set in the `UNIT_TEST_COVERAGE` environment variable.
+
+
+### Check quality
+
+```bash
+mvn checkstyle:checkstyle
+```
+
+Generates file `api-module/target/checkstyle-result.xml` with results.
+
+
+### Sonar
+
+Modify in `sonar.json` the `sonarProjectKey` project.

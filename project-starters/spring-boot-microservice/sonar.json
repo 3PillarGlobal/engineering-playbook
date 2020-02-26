@@ -1,0 +1,4 @@
+{
+  "sonarHost": "http://sonar.franconnect.net/",
+  "sonarProjectKey": "org.franconnect.TO_BE_MODIFIED"
+}
