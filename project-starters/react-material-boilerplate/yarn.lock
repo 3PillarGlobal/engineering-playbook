@@ -6376,8 +6376,8 @@ typeface-roboto@0.0.31:
   resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.31.tgz#6bb65f4cf68c6bf68a6739417d98b2dfecb7b263"
 
 ua-parser-js@^0.7.9:
-  version "0.7.14"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.14.tgz#110d53fa4c3f326c121292bbeac904d2e03387ca"
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
 
 uglify-js@3.0.x, uglify-js@^3.0.13:
   version "3.0.26"
