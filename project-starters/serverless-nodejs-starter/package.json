@@ -9,7 +9,7 @@
     "test": "mocha --timeout=3000 src/backend/\\*\\*/\\*.test.js"
   },
   "dependencies": {
-    "aws-sdk": "^2.12.0",
+    "aws-sdk": "^2.814.0",
     "uuid": "^2.0.3"
   },
   "devDependencies": {
