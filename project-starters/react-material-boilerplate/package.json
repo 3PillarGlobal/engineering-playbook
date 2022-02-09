@@ -11,7 +11,7 @@
     "react-router-dom": "^4.1.2",
     "typeface-roboto": "0.0.31",
     "superagent": "^3.5.2",
-    "yarn": "^0.24.4"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.10",
